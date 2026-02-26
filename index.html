@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASCEND — Elite Fitness Operating System</title>
+    <style>
+        /* ------------------------------------------------------------------
+           1. DESIGN SYSTEM & GLOBALS (BLACKISH/NEUTRAL TONE)
+           ------------------------------------------------------------------ */
+        :root {
+            /* True Black / Dark Charcoal Theme */
+            --bg-base: #030303;
+            --bg-start: #080808;
+            --bg-end: #121212;
+            
+            --primary: #00E5A8;
+            --accent: #FF3B81;
+            --power: #FFB800;
+            
+            /* Neutral Grays instead of Bluish Grays */
+            --text-muted: #8A8A93;
+            --text-main: #FFFFFF;
+            
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            
+            --ease: cubic-bezier(0.22, 1, 0.36, 1);
+            --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+            
+            --font-display: "Helvetica Neue", -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-main: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", system-ui, sans-serif;
+            --font-mono: "SF Mono", "Space Mono", monospace;
+            --max-width: 1200px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: linear-gradient(180deg, var(--bg-start) 0%, var(--bg-end) 100%);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            overflow-x: hidden;
+            min-height: 100vh;
+            line-height: 1.5;
+        }
+
+        ::selection { background: var(--primary); color: #000; }
+
+        /* Subtle Animated Noise Overlay */
+        .noise-overlay {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            pointer-events: none; z-index: 9999; opacity: 0.025;
+            background: url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
+            animation: noise-shift 1s steps(2) infinite;
+        }
+        @keyframes noise-shift { 0% { transform: translate(0,0); } 100% { transform: translate(1%, 1%); } }
+
+        /* Scroll Progress Bar */
+        #scroll-progress {
+            position: fixed; top: 0; left: 0; width: 0%; height: 2px;
+            background: var(--primary); z-index: 10000; transition: width 0.1s linear;
+        }
+
+        h1, h2, h3, h4 { font-weight: 700; letter-spacing: -0.5px; }
+        .number { font-variant-numeric: tabular-nums; font-weight: 700; }
+        .muted { color: var(--text-muted); font-weight: 500; }
+        .container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; position: relative; z-index: 10; }
+
+        /* ------------------------------------------------------------------
+           2. HEADER & NAVIGATION
+           ------------------------------------------------------------------ */
+        nav {
+            position: fixed; top: 0; left: 0; width: 100%; padding: 24px 0; z-index: 100;
+            transition: padding 0.6s var(--ease), background 0.6s var(--ease), backdrop-filter 0.6s var(--ease);
+        }
+        nav.scrolled {
+            padding: 16px 0; background: rgba(5, 5, 5, 0.85); backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+        .nav-inner { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 20px; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; }
+        
+        .nav-right { display: flex; align-items: center; gap: 32px; }
+        .nav-links { display: flex; gap: 32px; }
+        .nav-links a { 
+            color: var(--text-muted); text-decoration: none; font-weight: 500; font-size: 14px; 
+            position: relative; transition: color 0.3s var(--ease);
+        }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: -4px; left: 0; width: 100%; height: 1px;
+            background: var(--primary); transform: scaleX(0); transform-origin: right; transition: transform 0.4s var(--ease);
+        }
+        .nav-links a:hover { color: var(--text-main); }
+        .nav-links a:hover::after { transform: scaleX(1); transform-origin: left; }
+
+        .nav-btn-download {
+            padding: 10px 24px; border: 1px solid var(--glass-border); border-radius: 100px;
+            color: var(--text-main); font-size: 12px; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 1px; text-decoration: none; transition: all 0.4s var(--ease);
+            background: rgba(255,255,255,0.03); backdrop-filter: blur(10px);
+        }
+        .nav-btn-download:hover {
+            background: rgba(255,255,255,0.1); border-color: var(--primary);
+            box-shadow: 0 0 15px rgba(0, 229, 168, 0.2); color: var(--primary);
+        }
+
+        /* ------------------------------------------------------------------
+           3. UI GLASS COMPONENTS
+           ------------------------------------------------------------------ */
+        .glass-card {
+            background: var(--glass-bg); backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border); border-radius: 20px;
+            box-shadow: var(--glass-shadow); position: relative; overflow: hidden;
+            transition: transform 0.6s var(--ease), box-shadow 0.6s var(--ease);
+        }
+        .glass-card::before {
+            content: ''; position: absolute; top: 0; left: -150%; width: 50%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+            transform: skewX(-20deg); transition: left 0.6s var(--ease);
+        }
+        .glass-card:hover::before { left: 150%; }
+
+        .btn {
+            padding: 16px 32px; border-radius: 100px; font-weight: 700; font-size: 14px;
+            cursor: pointer; border: none; position: relative; overflow: hidden;
+            transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+            display: inline-flex; align-items: center; justify-content: center;
+        }
+        .btn:active { transform: scale(0.96); }
+
+        .btn-primary { background: var(--primary); color: #000; box-shadow: 0 0 20px rgba(0, 229, 168, 0.2); }
+        .btn-primary:hover { box-shadow: 0 0 30px rgba(0, 229, 168, 0.4); }
+
+        .btn-secondary { background: var(--glass-bg); color: var(--text-main); border: 1px solid var(--glass-border); backdrop-filter: blur(10px); }
+        .btn-secondary:hover { background: rgba(255,255,255,0.1); }
+
+        /* ------------------------------------------------------------------
+           4. HERO SECTION
+           ------------------------------------------------------------------ */
+        .hero { height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; position: relative; overflow: hidden;}
+        
+        .hero-bg {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 800px; height: 800px; z-index: 0; pointer-events: none; opacity: 0.6;
+        }
+        .ring { fill: none; stroke-linecap: round; transform-origin: center; }
+        .ring-1 { stroke: var(--glass-border); stroke-width: 1px; animation: spin 40s linear infinite; }
+        .ring-2 { stroke: var(--primary); stroke-width: 2px; stroke-dasharray: 600 1200; animation: spin 30s linear infinite reverse; opacity: 0.3;}
+        .ring-3 { stroke: var(--accent); stroke-width: 1px; stroke-dasharray: 400 800; animation: spin 20s linear infinite; opacity: 0.2; }
+        
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        .hero-content { position: relative; z-index: 10; }
+        .hero h1 {
+            font-size: clamp(40px, 5vw, 64px);
+            line-height: 1.1; margin-bottom: 24px;
+            background: linear-gradient(180deg, #FFF 0%, #A0AABF 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .hero p { font-size: 18px; margin-bottom: 48px; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .hero-actions { display: flex; gap: 16px; justify-content: center; }
+
+        /* ------------------------------------------------------------------
+           5. INTERACTIVE PERFORMANCE PANEL
+           ------------------------------------------------------------------ */
+        .panel-section { margin-top: -100px; position: relative; z-index: 20; padding-bottom: 120px; }
+        .metrics-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        
+        .metric-card { padding: 32px; display: flex; align-items: center; gap: 24px; transform-style: preserve-3d; perspective: 1000px; }
+        .metric-info { flex: 1; }
+        .metric-value { font-size: 40px; margin-bottom: 8px; display: block; }
+        .metric-label { font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); }
+
+        .progress-ring { width: 80px; height: 80px; transform: rotate(-90deg); }
+        .progress-ring circle { fill: none; stroke-width: 6; stroke-linecap: round; cx: 40; cy: 40; r: 34; }
+        .progress-bg { stroke: var(--glass-border); }
+        .progress-fill { stroke-dasharray: 214; stroke-dashoffset: 214; transition: stroke-dashoffset 1.5s var(--ease); }
+        .c-cal { stroke: var(--accent); } 
+        .c-vol { stroke: var(--power); } 
+        .c-min { stroke: var(--primary); }
+
+        /* ------------------------------------------------------------------
+           6. LIVE STATS BAR GRAPH
+           ------------------------------------------------------------------ */
+        .stats-section { padding: 100px 0; }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-size: 40px; margin-bottom: 16px; }
+
+        .graph-container {
+            padding: 64px 64px 32px 64px;
+            display: flex; align-items: flex-end; justify-content: space-between; height: 400px;
+            background-image: linear-gradient(var(--glass-border) 1px, transparent 1px), linear-gradient(90deg, var(--glass-border) 1px, transparent 1px); background-size: 100% 25%, 100% 100%;
+        }
+
+        .bar-wrapper { 
+            width: 8%; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; position: relative; 
+        }
+        
+        .bar-fill {
+            width: 100%; background: linear-gradient(180deg, var(--primary) 0%, rgba(0, 229, 168, 0.05) 100%);
+            border-radius: 6px 6px 0 0; transform-origin: bottom; transform: scaleY(0); 
+            transition: transform 1.2s var(--ease-out-expo); position: relative; cursor: pointer; box-shadow: 0 0 15px rgba(0, 229, 168, 0.1);
+        }
+        .graph-container.active .bar-fill { transform: scaleY(var(--h)); }
+        
+        .bar-fill::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.1); opacity: 0; transition: opacity 0.3s var(--ease); }
+        .bar-fill:hover::after { opacity: 1; }
+
+        .bar-label { margin-top: 16px; font-family: var(--font-mono); font-size: 14px; font-weight: 700; color: var(--text-main); }
+
+        /* ------------------------------------------------------------------
+           7. TESTIMONIALS 
+           ------------------------------------------------------------------ */
+        .social-section { padding: 100px 0 140px 0; overflow: hidden; background: linear-gradient(180deg, var(--bg-base) 0%, #080808 100%); }
+        .slider-track { display: flex; gap: 24px; width: max-content; animation: scroll 40s linear infinite; }
+        .slider-track:hover { animation-play-state: paused; }
+        
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        .testimonial-card {
+            width: 420px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px; padding: 40px; flex-shrink: 0; display: flex; flex-direction: column; justify-content: space-between;
+        }
+        .quote { font-size: 16px; font-style: italic; line-height: 1.6; color: var(--text-main); margin-bottom: 32px; }
+        
+        .author { display: flex; align-items: center; gap: 16px; }
+        .avatar { width: 44px; height: 44px; border-radius: 50%; background: #1A1A1A; }
+        .author-info { display: flex; flex-direction: column; }
+        .author-name { font-weight: 700; font-size: 14px; color: var(--text-main); }
+        .author-title { font-size: 12px; color: var(--text-muted); }
+
+        /* ------------------------------------------------------------------
+           8. BLOG SECTION
+           ------------------------------------------------------------------ */
+        .blog-section { padding: 100px 0 140px; background: var(--bg-base); }
+        .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+        
+        .blog-card { background: rgba(255,255,255,0.02); border: 1px solid var(--glass-border); border-radius: 16px; overflow: hidden; transition: transform 0.4s var(--ease); }
+        .blog-card:hover { transform: translateY(-8px); border-color: rgba(255,255,255,0.1); }
+        
+        .blog-thumb { height: 220px; width: 100%; background: #0A0A0A; position: relative; border-bottom: 1px solid var(--glass-border); }
+        .blog-thumb::after { content: ''; position: absolute; inset: 0; background: linear-gradient(0deg, #0A0A0A 0%, transparent 50%); }
+        
+        .blog-content { padding: 32px; }
+        .blog-date { font-family: var(--font-mono); font-size: 12px; color: var(--primary); margin-bottom: 12px; display: block; }
+        .blog-title { font-size: 20px; margin-bottom: 16px; line-height: 1.4; color: var(--text-main); }
+        .blog-link { color: var(--text-main); font-size: 14px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: color 0.3s var(--ease); }
+        .blog-link:hover { color: var(--primary); }
+
+        /* ------------------------------------------------------------------
+           9. FINAL CTA 
+           ------------------------------------------------------------------ */
+        .cta-section {
+            background: #000000; /* Pure black background */
+            padding: 160px 0; text-align: center; border-top: 1px solid var(--glass-border);
+        }
+        .cta-section h2 { font-size: 52px; line-height: 1.2; margin-bottom: 40px; font-weight: 700; }
+        
+        .btn-glow {
+            background: #00E5A8; color: #000; font-weight: 700; font-size: 15px;
+            padding: 18px 40px; border-radius: 100px; border: none; cursor: pointer;
+            box-shadow: 0 0 25px rgba(0, 229, 168, 0.4); text-decoration: none;
+            transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+            display: inline-block;
+        }
+        .btn-glow:hover { transform: translateY(-2px); box-shadow: 0 0 40px rgba(0, 229, 168, 0.6); }
+        .btn-glow:active { transform: translateY(0) scale(0.96); }
+
+        /* ------------------------------------------------------------------
+           10. FOOTER (NEW PREMIUM BLACKISH FOOTER)
+           ------------------------------------------------------------------ */
+        .footer {
+            background: #030303;
+            padding: 80px 0 40px;
+            border-top: 1px solid var(--glass-border);
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        .footer-brand .logo { margin-bottom: 16px; }
+        .footer-brand p { font-size: 14px; max-width: 280px; line-height: 1.6; }
+
+        .footer-links h4 { font-size: 16px; color: var(--text-main); margin-bottom: 24px; }
+        .footer-links a {
+            display: block; color: var(--text-muted); text-decoration: none;
+            font-size: 14px; margin-bottom: 12px; transition: color 0.3s var(--ease);
+        }
+        .footer-links a:hover { color: var(--primary); }
+
+        .footer-bottom {
+            border-top: 1px solid var(--glass-border);
+            padding-top: 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .footer-bottom p { font-size: 13px; }
+        .footer-socials { display: flex; gap: 16px; }
+        .footer-socials a { color: var(--text-muted); text-decoration: none; transition: color 0.3s var(--ease); font-size: 14px; }
+        .footer-socials a:hover { color: var(--text-main); }
+
+        /* ------------------------------------------------------------------
+           11. ANIMATIONS & RESPONSIVE
+           ------------------------------------------------------------------ */
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s var(--ease), transform 0.8s var(--ease); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .d-1 { transition-delay: 100ms; } .d-2 { transition-delay: 200ms; } .d-3 { transition-delay: 300ms; }
+
+        @media (max-width: 1024px) {
+            .blog-grid, .footer-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .metrics-grid, .blog-grid, .footer-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 40px; }
+            .graph-container { padding: 32px 16px; height: 300px; }
+            .panel-section { margin-top: -50px; }
+            .nav-links { display: none; }
+            .cta-section h2 { font-size: 36px; }
+            .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="noise-overlay"></div>
+    <div id="scroll-progress"></div>
+
+    <nav id="navbar">
+        <div class="container nav-inner">
+            <div class="logo">ASCEND</div>
+            <div class="nav-right">
+                <div class="nav-links">
+                    <a href="#features">Features</a>
+                    <a href="#performance">Performance</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#blog">Blog</a>
+                </div>
+                <a href="#download" class="nav-btn-download">Download</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero" id="hero">
+        <svg class="hero-bg" viewBox="0 0 1000 1000">
+            <circle class="ring ring-1" cx="500" cy="500" r="300"/>
+            <circle class="ring ring-2" cx="500" cy="500" r="400"/>
+            <circle class="ring ring-3" cx="500" cy="500" r="450"/>
+        </svg>
+        <div class="container hero-content reveal active">
+            <h1>Train Like an<br>Elite System</h1>
+            <p class="muted">The performance operating system for serious athletes.</p>
+            <div class="hero-actions">
+                <button class="btn btn-primary">Start Training</button>
+                <button class="btn btn-secondary">See Performance</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="panel-section container" id="performance">
+        <div class="metrics-grid">
+            <div class="glass-card metric-card reveal tilt-card d-1">
+                <div class="metric-info">
+                    <span class="number metric-value" data-target="3240">0</span>
+                    <span class="metric-label">Calories Burned</span>
+                </div>
+                <svg class="progress-ring"><circle class="progress-bg" /><circle class="progress-fill c-cal" data-percent="85" /></svg>
+            </div>
+            <div class="glass-card metric-card reveal tilt-card d-2">
+                <div class="metric-info">
+                    <span class="number metric-value" data-target="18400">0</span>
+                    <span class="metric-label">Training Vol (lbs)</span>
+                </div>
+                <svg class="progress-ring"><circle class="progress-bg" /><circle class="progress-fill c-vol" data-percent="62" /></svg>
+            </div>
+            <div class="glass-card metric-card reveal tilt-card d-3">
+                <div class="metric-info">
+                    <span class="number metric-value" data-target="142">0</span>
+                    <span class="metric-label">Active Minutes</span>
+                </div>
+                <svg class="progress-ring"><circle class="progress-bg" /><circle class="progress-fill c-min" data-percent="92" /></svg>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats-section container" id="features">
+        <div class="section-header reveal">
+            <h2>Weekly Performance</h2>
+        </div>
+        <div class="glass-card graph-container reveal">
+            <div class="bar-wrapper">
+                <div class="bar-fill" style="--h: 0.85; height: 100%; transition-delay: 0.0s;"></div>
+                <div class="bar-label">85%</div>
+            </div>
+            <div class="bar-wrapper">
+                <div class="bar-fill" style="--h: 0.60; height: 100%; transition-delay: 0.1s;"></div>
+                <div class="bar-label">60%</div>
+            </div>
+            <div class="bar-wrapper">
+                <div class="bar-fill" style="--h: 0.90; height: 100%; transition-delay: 0.2s;"></div>
+                <div class="bar-label">90%</div>
+            </div>
+            <div class="bar-wrapper">
+                <div class="bar-fill" style="--h: 0.45; height: 100%; transition-delay: 0.3s;"></div>
+                <div class="bar-label">45%</div>
+            </div>
+            <div class="bar-wrapper">
+                <div class="bar-fill" style="--h: 0.75; height: 100%; transition-delay: 0.4s;"></div>
+                <div class="bar-label">75%</div>
+            </div>
+            <div class="bar-wrapper">
+                <div class="bar-fill" style="--h: 1.00; height: 100%; transition-delay: 0.5s;"></div>
+                <div class="bar-label">100%</div>
+            </div>
+            <div class="bar-wrapper">
+                <div class="bar-fill" style="--h: 0.30; height: 100%; transition-delay: 0.6s;"></div>
+                <div class="bar-label">30%</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="social-section" id="experience">
+        <div class="container section-header reveal">
+            <h2>Built for Performance-Driven Athletes</h2>
+        </div>
+        <div class="slider-track reveal">
+            <div class="testimonial-card">
+                <p class="quote">"Clean, fast, and engineered to perfection. I don't train without it."</p>
+                <div class="author">
+                    <div class="avatar"></div>
+                    <div class="author-info">
+                        <span class="author-name">M. Davis</span>
+                        <span class="author-title">CrossFit Games Athlete</span>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="quote">"ASCEND replaced three different tracking systems. The telemetry is flawless."</p>
+                <div class="author">
+                    <div class="avatar"></div>
+                    <div class="author-info">
+                        <span class="author-name">J. Miller</span>
+                        <span class="author-title">Triathlete</span>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="quote">"The recovery analytics are strictly tier-one. It feels like having a performance engineer in my pocket."</p>
+                <div class="author">
+                    <div class="avatar"></div>
+                    <div class="author-info">
+                        <span class="author-name">S. Chen</span>
+                        <span class="author-title">Powerlifter</span>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="quote">"Clean, fast, and engineered to perfection. I don't train without it."</p>
+                <div class="author">
+                    <div class="avatar"></div>
+                    <div class="author-info">
+                        <span class="author-name">M. Davis</span>
+                        <span class="author-title">CrossFit Games Athlete</span>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="quote">"ASCEND replaced three different tracking systems. The telemetry is flawless."</p>
+                <div class="author">
+                    <div class="avatar"></div>
+                    <div class="author-info">
+                        <span class="author-name">J. Miller</span>
+                        <span class="author-title">Triathlete</span>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="quote">"The recovery analytics are strictly tier-one. It feels like having a performance engineer in my pocket."</p>
+                <div class="author">
+                    <div class="avatar"></div>
+                    <div class="author-info">
+                        <span class="author-name">S. Chen</span>
+                        <span class="author-title">Powerlifter</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="blog-section container" id="blog">
+        <div class="section-header reveal">
+            <h2>System Insights</h2>
+        </div>
+        <div class="blog-grid">
+            <div class="blog-card reveal d-1">
+                <div class="blog-thumb"></div>
+                <div class="blog-content">
+                    <span class="blog-date">24 OCT 2026</span>
+                    <h3 class="blog-title">Optimizing CNS Recovery with Predictive Biometrics</h3>
+                    <a href="#" class="blog-link">Read Intelligence →</a>
+                </div>
+            </div>
+            <div class="blog-card reveal d-2">
+                <div class="blog-thumb"></div>
+                <div class="blog-content">
+                    <span class="blog-date">18 OCT 2026</span>
+                    <h3 class="blog-title">The Math Behind ASCEND’s Kinematic Load Tracking</h3>
+                    <a href="#" class="blog-link">Read Intelligence →</a>
+                </div>
+            </div>
+            <div class="blog-card reveal d-3">
+                <div class="blog-thumb"></div>
+                <div class="blog-content">
+                    <span class="blog-date">09 OCT 2026</span>
+                    <h3 class="blog-title">Integrating Wearable Sync for Zero-Latency Output</h3>
+                    <a href="#" class="blog-link">Read Intelligence →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section" id="download">
+        <div class="container reveal">
+            <h2>Upgrade Your<br>Training Intelligence</h2>
+            <a href="#" class="btn-glow">Initialize System</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <div class="logo">ASCEND</div>
+                <p class="muted">The performance operating system engineered strictly for serious, data-driven athletes.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Platform</h4>
+                <a href="#features">Features</a>
+                <a href="#performance">Telemetry</a>
+                <a href="#experience">Testimonials</a>
+                <a href="#download">Download App</a>
+            </div>
+            <div class="footer-links">
+                <h4>Company</h4>
+                <a href="#blog">Blog</a>
+                <a href="#">About Us</a>
+                <a href="#">Careers</a>
+                <a href="#">Press Kit</a>
+            </div>
+            <div class="footer-links">
+                <h4>Legal</h4>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Data Security</a>
+                <a href="#">Contact Support</a>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p class="muted">© 2026 ASCEND Performance OS. All rights reserved.</p>
+            <div class="footer-socials">
+                <a href="#">Twitter (X)</a>
+                <a href="#">Instagram</a>
+                <a href="#">YouTube</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // Navbar Shrink & Scroll Progress
+            const progressBar = document.getElementById('scroll-progress');
+            const navbar = document.getElementById('navbar');
+            
+            window.addEventListener('scroll', () => {
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                progressBar.style.width = (winScroll / height) * 100 + '%';
+                if (winScroll > 50) navbar.classList.add('scrolled');
+                else navbar.classList.remove('scrolled');
+            });
+
+            // Mouse Parallax (Hero Rings)
+            const hero = document.getElementById('hero');
+            const heroBg = document.querySelector('.hero-bg');
+            if (hero && heroBg) {
+                hero.addEventListener('mousemove', (e) => {
+                    const x = (e.clientX / window.innerWidth - 0.5) * 40; 
+                    const y = (e.clientY / window.innerHeight - 0.5) * 40;
+                    heroBg.style.transform = `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`;
+                });
+                hero.addEventListener('mouseleave', () => {
+                    heroBg.style.transform = `translate(-50%, -50%)`;
+                });
+            }
+
+            // 3D Tilt Effect
+            document.querySelectorAll('.tilt-card').forEach(card => {
+                card.addEventListener('mousemove', e => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left; const y = e.clientY - rect.top;
+                    const rotateX = ((y - rect.height / 2) / (rect.height / 2)) * -5; 
+                    const rotateY = ((x - rect.width / 2) / (rect.width / 2)) * 5;
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+                });
+            });
+
+            // Button Ripple Micro-interaction
+            document.querySelectorAll('.btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    let ripple = document.createElement('span');
+                    ripple.style.position = 'absolute';
+                    ripple.style.background = 'rgba(255, 255, 255, 0.4)';
+                    ripple.style.borderRadius = '50%';
+                    ripple.style.transform = 'translate(-50%, -50%)';
+                    ripple.style.pointerEvents = 'none';
+                    ripple.style.width = '100px';
+                    ripple.style.height = '100px';
+                    ripple.style.animation = 'ripple 0.6s cubic-bezier(0.22, 1, 0.36, 1)';
+                    
+                    const rect = this.getBoundingClientRect();
+                    ripple.style.left = `${e.clientX - rect.left}px`;
+                    ripple.style.top = `${e.clientY - rect.top}px`;
+                    
+                    this.appendChild(ripple);
+                    setTimeout(() => ripple.remove(), 600);
+                });
+            });
+
+            // Smooth Number Counter
+            const animateValue = (obj, start, end, duration) => {
+                let startTimestamp = null;
+                const step = (timestamp) => {
+                    if (!startTimestamp) startTimestamp = timestamp;
+                    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                    const easeOut = 1 - Math.pow(1 - progress, 4);
+                    obj.innerHTML = Math.floor(easeOut * (end - start) + start).toLocaleString();
+                    if (progress < 1) window.requestAnimationFrame(step);
+                };
+                window.requestAnimationFrame(step);
+            };
+
+            // Intersection Observer (Triggers Stats, Graphs, Reveals)
+            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
+            const observer = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const el = entry.target;
+                        el.classList.add('active'); // Triggers graph bars & standard reveals
+
+                        // Trigger Numeric Stats & Rings
+                        if (el.classList.contains('metric-card')) {
+                            const numEl = el.querySelector('.metric-value');
+                            if (numEl) {
+                                const targetVal = parseInt(numEl.getAttribute('data-target'));
+                                animateValue(numEl, 0, targetVal, 2000);
+                            }
+
+                            const ring = el.querySelector('.progress-fill');
+                            if (ring) {
+                                const percent = parseInt(ring.getAttribute('data-percent'));
+                                const offset = 214 - (percent / 100) * 214; /* Using 214 circumference from V1 */
+                                setTimeout(() => { ring.style.strokeDashoffset = offset; }, 100);
+                            }
+                        }
+
+                        obs.unobserve(el); // Prevent re-triggering
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        });
+    </script>
+    <style>
+        @keyframes ripple {
+            0% { width: 0; height: 0; opacity: 0.5; }
+            100% { width: 300px; height: 300px; opacity: 0; }
+        }
+    </style>
+</body>
+</html>
