@@ -241,7 +241,15 @@
         .blog-card { background: rgba(255,255,255,0.02); border: 1px solid var(--glass-border); border-radius: 16px; overflow: hidden; transition: transform 0.4s var(--ease); }
         .blog-card:hover { transform: translateY(-8px); border-color: rgba(255,255,255,0.1); }
         
-        .blog-thumb { height: 220px; width: 100%; background: #0A0A0A; position: relative; border-bottom: 1px solid var(--glass-border); }
+        .blog-thumb { 
+    height: 220px; 
+    width: 100%; 
+    position: relative; 
+    border-bottom: 1px solid var(--glass-border);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
         .blog-thumb::after { content: ''; position: absolute; inset: 0; background: linear-gradient(0deg, #0A0A0A 0%, transparent 50%); }
         
         .blog-content { padding: 32px; }
@@ -495,36 +503,44 @@
     </section>
 
     <section class="blog-section container" id="blog">
-        <div class="section-header reveal">
-            <h2>System Insights</h2>
-        </div>
-        <div class="blog-grid">
-            <div class="blog-thumb"></div>
-                <div class="blog-thumb"></div>
-                <div class="blog-content">
-                    <span class="blog-date">24 OCT 2026</span>
-                    <h3 class="blog-title">Optimizing CNS Recovery with Predictive Biometrics</h3>
-                    <a href="#" class="blog-link">Read Intelligence →</a>
-                </div>
-            </div>
-            <div class="blog-card reveal d-2">
-                <div class="blog-thumb"></div>
-                <div class="blog-content">
-                    <span class="blog-date">18 OCT 2026</span>
-                    <h3 class="blog-title">The Math Behind ASCEND’s Kinematic Load Tracking</h3>
-                    <a href="#" class="blog-link">Read Intelligence →</a>
-                </div>
-            </div>
-            <div class="blog-card reveal d-3">
-                <div class="blog-thumb"></div>
-                <div class="blog-content">
-                    <span class="blog-date">09 OCT 2026</span>
-                    <h3 class="blog-title">Integrating Wearable Sync for Zero-Latency Output</h3>
-                    <a href="#" class="blog-link">Read Intelligence →</a>
-                </div>
+    <div class="section-header reveal">
+        <h2>System Insights</h2>
+    </div>
+
+    <div class="blog-grid">
+
+        <!-- CARD 1 -->
+        <div class="blog-card reveal d-1">
+            <div class="blog-thumb" style="background-image: url('../images/cns.jpg');"></div>
+            <div class="blog-content">
+                <span class="blog-date">24 OCT 2026</span>
+                <h3 class="blog-title">Optimizing CNS Recovery with Predictive Biometrics</h3>
+                <a href="#" class="blog-link">Read Intelligence →</a>
             </div>
         </div>
-    </section>
+
+        <!-- CARD 2 -->
+        <div class="blog-card reveal d-2">
+            <div class="blog-thumb" style="background-image: url('../images/math.jpg');"></div>
+            <div class="blog-content">
+                <span class="blog-date">18 OCT 2026</span>
+                <h3 class="blog-title">The Math Behind ASCEND’s Kinematic Load Tracking</h3>
+                <a href="#" class="blog-link">Read Intelligence →</a>
+            </div>
+        </div>
+
+        <!-- CARD 3 -->
+        <div class="blog-card reveal d-3">
+            <div class="blog-thumb" style="background-image: url('../images/wearable.jpg');"></div>
+            <div class="blog-content">
+                <span class="blog-date">09 OCT 2026</span>
+                <h3 class="blog-title">Integrating Wearable Sync for Zero-Latency Output</h3>
+                <a href="#" class="blog-link">Read Intelligence →</a>
+            </div>
+        </div>
+
+    </div>
+</section>
 
     <section class="cta-section" id="download">
         <div class="container reveal">
@@ -690,5 +706,4 @@
 </body>
 
 </html>
-
 
