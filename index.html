@@ -81,7 +81,6 @@
             border-bottom: 1px solid var(--glass-border);
         }
         .nav-inner { display: flex; justify-content: space-between; align-items: center; }
-        /* FIX: Increased font-size from 20px to 30px (50% increase) */
         .logo { font-size: 30px; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; }
         
         .nav-right { display: flex; align-items: center; gap: 32px; }
@@ -175,9 +174,9 @@
         .metric-value { font-size: 40px; margin-bottom: 8px; display: block; }
         .metric-label { font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); }
 
-        /* FIX: Added min-width and flex-shrink so it doesn't get crushed to 0 width on mobile */
+        /* FIX: Removed cx, cy, and r from CSS. Moved to HTML. */
         .progress-ring { width: 80px; height: 80px; min-width: 80px; flex-shrink: 0; transform: rotate(-90deg); }
-        .progress-ring circle { fill: none; stroke-width: 9; stroke-linecap: round; cx: 40; cy: 40; r: 34; }
+        .progress-ring circle { fill: none; stroke-width: 9; stroke-linecap: round; }
         .progress-bg { stroke: var(--glass-border); }
         .progress-fill { stroke-dasharray: 214; stroke-dashoffset: 214; transition: stroke-dashoffset 1.5s var(--ease); }
         .c-cal { stroke: var(--accent); } 
@@ -331,7 +330,11 @@
             .metrics-grid, .blog-grid, .footer-grid { grid-template-columns: 1fr; }
             .hero h1 { font-size: 40px; }
             .graph-container { padding: 32px 16px; height: 300px; }
+            
             .panel-section { margin-top: -20px; }
+            /* FIX: Ensure mobile metrics cards have enough space */
+            .metric-card { padding: 24px; gap: 16px; } 
+
             .nav-links { display: none; }
             .cta-section h2 { font-size: 36px; }
             .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
@@ -377,27 +380,40 @@
 
     <section class="panel-section container" id="performance">
         <div class="metrics-grid">
+            
             <div class="glass-card metric-card reveal tilt-card d-1">
                 <div class="metric-info">
                     <span class="number metric-value" data-target="3240">0</span>
                     <span class="metric-label">Calories Burned</span>
                 </div>
-                <svg class="progress-ring"><circle class="progress-bg" /><circle class="progress-fill c-cal" data-percent="85" /></svg>
+                <svg class="progress-ring" viewBox="0 0 80 80">
+                    <circle class="progress-bg" cx="40" cy="40" r="34"></circle>
+                    <circle class="progress-fill c-cal" cx="40" cy="40" r="34" data-percent="85"></circle>
+                </svg>
             </div>
+            
             <div class="glass-card metric-card reveal tilt-card d-2">
                 <div class="metric-info">
                     <span class="number metric-value" data-target="18400">0</span>
                     <span class="metric-label">Training Vol (lbs)</span>
                 </div>
-                <svg class="progress-ring"><circle class="progress-bg" /><circle class="progress-fill c-vol" data-percent="62" /></svg>
+                <svg class="progress-ring" viewBox="0 0 80 80">
+                    <circle class="progress-bg" cx="40" cy="40" r="34"></circle>
+                    <circle class="progress-fill c-vol" cx="40" cy="40" r="34" data-percent="62"></circle>
+                </svg>
             </div>
+            
             <div class="glass-card metric-card reveal tilt-card d-3">
                 <div class="metric-info">
                     <span class="number metric-value" data-target="142">0</span>
                     <span class="metric-label">Active Minutes</span>
                 </div>
-                <svg class="progress-ring"><circle class="progress-bg" /><circle class="progress-fill c-min" data-percent="92" /></svg>
+                <svg class="progress-ring" viewBox="0 0 80 80">
+                    <circle class="progress-bg" cx="40" cy="40" r="34"></circle>
+                    <circle class="progress-fill c-min" cx="40" cy="40" r="34" data-percent="92"></circle>
+                </svg>
             </div>
+            
         </div>
     </section>
 
