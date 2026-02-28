@@ -81,7 +81,8 @@
             border-bottom: 1px solid var(--glass-border);
         }
         .nav-inner { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 20px; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; }
+        /* FIX: Increased font-size from 20px to 30px (50% increase) */
+        .logo { font-size: 30px; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; }
         
         .nav-right { display: flex; align-items: center; gap: 32px; }
         .nav-links { display: flex; gap: 32px; }
@@ -166,7 +167,6 @@
         /* ------------------------------------------------------------------
            5. INTERACTIVE PERFORMANCE PANEL
            ------------------------------------------------------------------ */
-        /* FIX: Adjusted margin-top down to -40px (from -100px) and padding-bottom to 60px */
         .panel-section { margin-top: -40px; position: relative; z-index: 20; padding-bottom: 60px; }
         .metrics-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
         
@@ -175,7 +175,8 @@
         .metric-value { font-size: 40px; margin-bottom: 8px; display: block; }
         .metric-label { font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); }
 
-        .progress-ring { width: 80px; height: 80px; transform: rotate(-90deg); }
+        /* FIX: Added min-width and flex-shrink so it doesn't get crushed to 0 width on mobile */
+        .progress-ring { width: 80px; height: 80px; min-width: 80px; flex-shrink: 0; transform: rotate(-90deg); }
         .progress-ring circle { fill: none; stroke-width: 9; stroke-linecap: round; cx: 40; cy: 40; r: 34; }
         .progress-bg { stroke: var(--glass-border); }
         .progress-fill { stroke-dasharray: 214; stroke-dashoffset: 214; transition: stroke-dashoffset 1.5s var(--ease); }
@@ -186,7 +187,6 @@
         /* ------------------------------------------------------------------
            6. LIVE STATS BAR GRAPH
            ------------------------------------------------------------------ */
-        /* FIX: Increased padding-top to 90px to increase gap from the cards */
         .stats-section { padding: 90px 0 60px 0; }
         .section-header { text-align: center; margin-bottom: 40px; }
         .section-header h2 { font-size: 40px; margin-bottom: 16px; }
@@ -331,10 +331,7 @@
             .metrics-grid, .blog-grid, .footer-grid { grid-template-columns: 1fr; }
             .hero h1 { font-size: 40px; }
             .graph-container { padding: 32px 16px; height: 300px; }
-            
-            /* FIX: Adjusted mobile panel margin to stay consistent with desktop changes */
             .panel-section { margin-top: -20px; }
-            
             .nav-links { display: none; }
             .cta-section h2 { font-size: 36px; }
             .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
