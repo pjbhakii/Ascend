@@ -148,7 +148,7 @@
         }
         .ring { fill: none; stroke-linecap: round; transform-origin: center; }
         .ring-1 { stroke: var(--glass-border); stroke-width: 1px; animation: spin 40s linear infinite; }
-        .ring-2 { stroke: var(--primary); stroke-width: 2px; stroke-dasharray: 600 1200; animation: spin 30s linear infinite reverse; opacity: 0.3;}
+        .ring-2 { stroke: var(--primary); stroke-width: 3px; stroke-dasharray: 600 1200; animation: spin 30s linear infinite reverse; opacity: 0.45;}
         .ring-3 { stroke: var(--accent); stroke-width: 1px; stroke-dasharray: 400 800; animation: spin 20s linear infinite; opacity: 0.2; }
         
         @keyframes spin { 100% { transform: rotate(360deg); } }
@@ -166,7 +166,8 @@
         /* ------------------------------------------------------------------
            5. INTERACTIVE PERFORMANCE PANEL
            ------------------------------------------------------------------ */
-        .panel-section { margin-top: -100px; position: relative; z-index: 20; padding-bottom: 120px; }
+        /* FIX: Adjusted margin-top down to -40px (from -100px) and padding-bottom to 60px */
+        .panel-section { margin-top: -40px; position: relative; z-index: 20; padding-bottom: 60px; }
         .metrics-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
         
         .metric-card { padding: 32px; display: flex; align-items: center; gap: 24px; transform-style: preserve-3d; perspective: 1000px; }
@@ -175,7 +176,7 @@
         .metric-label { font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); }
 
         .progress-ring { width: 80px; height: 80px; transform: rotate(-90deg); }
-        .progress-ring circle { fill: none; stroke-width: 6; stroke-linecap: round; cx: 40; cy: 40; r: 34; }
+        .progress-ring circle { fill: none; stroke-width: 9; stroke-linecap: round; cx: 40; cy: 40; r: 34; }
         .progress-bg { stroke: var(--glass-border); }
         .progress-fill { stroke-dasharray: 214; stroke-dashoffset: 214; transition: stroke-dashoffset 1.5s var(--ease); }
         .c-cal { stroke: var(--accent); } 
@@ -185,8 +186,9 @@
         /* ------------------------------------------------------------------
            6. LIVE STATS BAR GRAPH
            ------------------------------------------------------------------ */
-        .stats-section { padding: 100px 0; }
-        .section-header { text-align: center; margin-bottom: 60px; }
+        /* FIX: Increased padding-top to 90px to increase gap from the cards */
+        .stats-section { padding: 90px 0 60px 0; }
+        .section-header { text-align: center; margin-bottom: 40px; }
         .section-header h2 { font-size: 40px; margin-bottom: 16px; }
 
         .graph-container {
@@ -214,7 +216,7 @@
         /* ------------------------------------------------------------------
            7. TESTIMONIALS 
            ------------------------------------------------------------------ */
-        .social-section { padding: 100px 0 140px 0; overflow: hidden; background: linear-gradient(180deg, var(--bg-base) 0%, #080808 100%); }
+        .social-section { padding: 80px 0; overflow: hidden; background: linear-gradient(180deg, var(--bg-base) 0%, #080808 100%); }
         .slider-track { display: flex; gap: 24px; width: max-content; animation: scroll 40s linear infinite; }
         .slider-track:hover { animation-play-state: paused; }
         
@@ -235,21 +237,21 @@
         /* ------------------------------------------------------------------
            8. BLOG SECTION
            ------------------------------------------------------------------ */
-        .blog-section { padding: 100px 0 140px; background: var(--bg-base); }
+        .blog-section { padding: 80px 0 100px; background: var(--bg-base); }
         .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
         
         .blog-card { background: rgba(255,255,255,0.02); border: 1px solid var(--glass-border); border-radius: 16px; overflow: hidden; transition: transform 0.4s var(--ease); }
         .blog-card:hover { transform: translateY(-8px); border-color: rgba(255,255,255,0.1); }
         
         .blog-thumb { 
-    height: 220px; 
-    width: 100%; 
-    position: relative; 
-    border-bottom: 1px solid var(--glass-border);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
+            height: 220px; 
+            width: 100%; 
+            position: relative; 
+            border-bottom: 1px solid var(--glass-border);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
         .blog-thumb::after { content: ''; position: absolute; inset: 0; background: linear-gradient(0deg, #0A0A0A 0%, transparent 50%); }
         
         .blog-content { padding: 32px; }
@@ -262,8 +264,8 @@
            9. FINAL CTA 
            ------------------------------------------------------------------ */
         .cta-section {
-            background: #000000; /* Pure black background */
-            padding: 160px 0; text-align: center; border-top: 1px solid var(--glass-border);
+            background: #000000; 
+            padding: 100px 0; text-align: center; border-top: 1px solid var(--glass-border);
         }
         .cta-section h2 { font-size: 52px; line-height: 1.2; margin-bottom: 40px; font-weight: 700; }
         
@@ -278,7 +280,7 @@
         .btn-glow:active { transform: translateY(0) scale(0.96); }
 
         /* ------------------------------------------------------------------
-           10. FOOTER (NEW PREMIUM BLACKISH FOOTER)
+           10. FOOTER
            ------------------------------------------------------------------ */
         .footer {
             background: #030303;
@@ -329,10 +331,14 @@
             .metrics-grid, .blog-grid, .footer-grid { grid-template-columns: 1fr; }
             .hero h1 { font-size: 40px; }
             .graph-container { padding: 32px 16px; height: 300px; }
-            .panel-section { margin-top: -50px; }
+            
+            /* FIX: Adjusted mobile panel margin to stay consistent with desktop changes */
+            .panel-section { margin-top: -20px; }
+            
             .nav-links { display: none; }
             .cta-section h2 { font-size: 36px; }
             .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+            .testimonial-card { width: 85vw; max-width: 320px; padding: 24px; }
         }
     </style>
 </head>
@@ -503,44 +509,39 @@
     </section>
 
     <section class="blog-section container" id="blog">
-    <div class="section-header reveal">
-        <h2>System Insights</h2>
-    </div>
-
-    <div class="blog-grid">
-
-        <!-- CARD 1 -->
-        <div class="blog-card reveal d-1">
-            <div class="blog-thumb" style="background-image: url('images/cns.jpg');"></div>
-            <div class="blog-content">
-                <span class="blog-date">24 OCT 2026</span>
-                <h3 class="blog-title">Optimizing CNS Recovery with Predictive Biometrics</h3>
-                <a href="#" class="blog-link">Read Intelligence →</a>
-            </div>
+        <div class="section-header reveal">
+            <h2>System Insights</h2>
         </div>
 
-        <!-- CARD 2 -->
-        <div class="blog-card reveal d-2">
-            <div class="blog-thumb" style="background-image: url('../images/math.jpg');"></div>
-            <div class="blog-content">
-                <span class="blog-date">18 OCT 2026</span>
-                <h3 class="blog-title">The Math Behind ASCEND’s Kinematic Load Tracking</h3>
-                <a href="#" class="blog-link">Read Intelligence →</a>
+        <div class="blog-grid">
+            <div class="blog-card reveal d-1">
+                <div class="blog-thumb" style="background-image: url('images/cns.jpg');"></div>
+                <div class="blog-content">
+                    <span class="blog-date">24 OCT 2026</span>
+                    <h3 class="blog-title">Optimizing CNS Recovery with Predictive Biometrics</h3>
+                    <a href="#" class="blog-link">Read Intelligence →</a>
+                </div>
+            </div>
+
+            <div class="blog-card reveal d-2">
+                <div class="blog-thumb" style="background-image: url('../images/math.jpg');"></div>
+                <div class="blog-content">
+                    <span class="blog-date">18 OCT 2026</span>
+                    <h3 class="blog-title">The Math Behind ASCEND’s Kinematic Load Tracking</h3>
+                    <a href="#" class="blog-link">Read Intelligence →</a>
+                </div>
+            </div>
+
+            <div class="blog-card reveal d-3">
+                <div class="blog-thumb" style="background-image: url('../images/wearable.jpg');"></div>
+                <div class="blog-content">
+                    <span class="blog-date">09 OCT 2026</span>
+                    <h3 class="blog-title">Integrating Wearable Sync for Zero-Latency Output</h3>
+                    <a href="#" class="blog-link">Read Intelligence →</a>
+                </div>
             </div>
         </div>
-
-        <!-- CARD 3 -->
-        <div class="blog-card reveal d-3">
-            <div class="blog-thumb" style="background-image: url('../images/wearable.jpg');"></div>
-            <div class="blog-content">
-                <span class="blog-date">09 OCT 2026</span>
-                <h3 class="blog-title">Integrating Wearable Sync for Zero-Latency Output</h3>
-                <a href="#" class="blog-link">Read Intelligence →</a>
-            </div>
-        </div>
-
-    </div>
-</section>
+    </section>
 
     <section class="cta-section" id="download">
         <div class="container reveal">
@@ -684,7 +685,7 @@
                             const ring = el.querySelector('.progress-fill');
                             if (ring) {
                                 const percent = parseInt(ring.getAttribute('data-percent'));
-                                const offset = 214 - (percent / 100) * 214; /* Using 214 circumference from V1 */
+                                const offset = 214 - (percent / 100) * 214; 
                                 setTimeout(() => { ring.style.strokeDashoffset = offset; }, 100);
                             }
                         }
@@ -704,7 +705,4 @@
         }
     </style>
 </body>
-
 </html>
-
-
