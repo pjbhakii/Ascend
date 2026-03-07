@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 228 27% 5%;
+    --foreground: 0 0% 100%;
+
+    --card: 228 18% 8%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 228 18% 8%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 345 100% 57%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 228 18% 12%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 228 18% 12%;
+    --muted-foreground: 220 6% 57%;
+
+    --accent: 135 64% 52%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 228 18% 15%;
+    --input: 228 18% 15%;
+    --ring: 345 100% 57%;
+
+    --radius: 0.875rem;
+
+    --crimson: 345 100% 57%;
+    --teal: 135 64% 52%;
+    --amber: 50 100% 51%;
+    --text-secondary: 220 6% 57%;
+
+    --sidebar-background: 228 18% 8%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 345 100% 57%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 228 18% 12%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 228 18% 15%;
+    --sidebar-ring: 345 100% 57%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", system-ui, sans-serif;
+  }
+}
+
+@layer utilities {
+  .text-crimson {
+    color: hsl(var(--crimson));
+  }
+  .text-teal {
+    color: hsl(var(--teal));
+  }
+  .text-amber {
+    color: hsl(var(--amber));
+  }
+  .bg-crimson {
+    background-color: hsl(var(--crimson));
+  }
+  .bg-teal {
+    background-color: hsl(var(--teal));
+  }
+  .bg-amber {
+    background-color: hsl(var(--amber));
+  }
+  .text-secondary-custom {
+    color: hsl(var(--text-secondary));
+  }
+}
+
+@keyframes ring-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.75; }
+}
+
+@keyframes bar-grow {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>System Insights & Blog | ASCEND Performance OS</title>
+    <meta name="description" content="Deep dives into performance science, biometric tracking, and the engineering behind elite training protocols.">
+    
+    <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        :root {
+            --bg-base: #000000;
+            --primary: #2563eb; 
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --font-main: 'General Sans', sans-serif;
+            --ease: cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        body {
+            background-color: var(--bg-base);
+            color: #FFFFFF;
+            font-family: var(--font-main);
+            margin: 0;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Ambient Background Glow */
+        .ambient-glow {
+            position: fixed;
+            top: -10%; left: 50%; transform: translateX(-50%);
+            width: 80vw; height: 60vh;
+            background: radial-gradient(circle, rgba(37,99,235,0.08) 0%, rgba(0,0,0,0) 70%);
+            z-index: -1; pointer-events: none;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 100;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        /* Glass Card Base */
+        .glass-card {
+            background: var(--glass-bg); 
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border); 
+            border-radius: 16px;
+        }
+    </style>
+</head>
+<body id="top">
+
+    <div class="ambient-glow"></div>
+
+    <nav id="navbar" class="px-6 md:px-[120px] py-[16px]">
+        <div class="flex items-center justify-between">
+            <a href="/#home" class="text-[24px] font-bold tracking-tighter text-white no-underline">ASCEND</a>
+            <div class="flex items-center space-x-[40px]">
+                <div class="hidden md:flex items-center space-x-[30px]">
+                    <a href="/#features" class="text-[14px] font-medium opacity-70 hover:opacity-100 transition-opacity">Home</a>
+                    <a href="/#performance" class="text-[14px] font-medium opacity-70 hover:opacity-100 transition-opacity">Performance</a>
+                    <a href="/#experience" class="text-[14px] font-medium opacity-70 hover:opacity-100 transition-opacity">Experience</a>
+                    <a href="/blog.html" class="text-[14px] font-medium text-[#2563eb] transition-opacity">Blog</a>
+                </div>
+                <a href="https://ascend1-silk.vercel.app/public/app/Ascend.apk" class="px-[29px] py-[11px] rounded-full border border-white/40 bg-transparent text-[14px] font-medium text-white uppercase tracking-wider transition-all duration-300 hover:bg-[#2563eb] hover:border-[#2563eb] hover:shadow-[0_0_20px_rgba(37,99,235,0.5)]">
+                    Download
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="pt-[160px] pb-12 px-6 max-w-7xl mx-auto text-center md:text-left">
+        <h1 class="text-[40px] md:text-[56px] font-bold leading-[1.1] mb-4 text-white tracking-tight">
+            System Insights
+        </h1>
+        <p class="text-lg text-white/60 max-w-2xl">
+            Deep dives into performance science, biometric tracking, and the engineering behind elite training protocols.
+        </p>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 pb-32">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <div class="glass-card flex flex-col overflow-hidden group hover:-translate-y-2 transition-transform duration-300">
+                <div class="relative h-[220px] w-full bg-cover bg-center border-b border-white/10" style="background-image: url('images/cns.jpg');">
+                    <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-300"></div>
+                    <span class="absolute top-4 right-4 bg-[#2563eb] text-white text-[11px] font-bold px-3 py-1.5 rounded-full tracking-wider uppercase">
+                        Intelligence
+                    </span>
+                </div>
+                <div class="p-8 relative flex flex-col flex-grow bg-white/[0.01]">
+                    <div class="absolute -top-8 left-8 w-16 h-16 rounded-full border-4 border-[#0a0a0a] overflow-hidden bg-gray-800 shadow-lg flex items-center justify-center">
+                        <img src="/public/images/Author.jpg" alt="ASCEND Author" class="w-full h-full object-cover">
+                    </div>
+                    
+                    <span class="mt-4 text-blue-500 text-xs font-bold uppercase mb-4 block">24 OCT 2026</span>
+                    <h3 class="text-xl font-bold text-white mb-4 leading-tight group-hover:text-[#2563eb] transition-colors duration-300">
+                        Optimizing CNS Recovery with Predictive Biometrics
+                    </h3>
+                    <p class="text-white/50 text-sm mb-8 flex-grow leading-relaxed">
+                        Discover how elite strength athletes use predictive biometrics and telemetry to measure Central Nervous System fatigue and prevent overtraining.
+                    </p>
+                    <a href="/blog/optimizing-cns-recovery.html" class="text-[#2563eb] font-bold text-sm uppercase tracking-wider hover:text-blue-400 inline-flex items-center gap-2 mt-auto w-max">
+                        Read Intelligence <span class="text-lg leading-none">»</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="glass-card flex flex-col overflow-hidden group hover:-translate-y-2 transition-transform duration-300">
+                <div class="relative h-[220px] w-full bg-cover bg-center border-b border-white/10" style="background-image: url('images/math.jpg');">
+                    <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-300"></div>
+                    <span class="absolute top-4 right-4 bg-[#2563eb] text-white text-[11px] font-bold px-3 py-1.5 rounded-full tracking-wider uppercase">
+                        Data Science
+                    </span>
+                </div>
+                <div class="p-8 relative flex flex-col flex-grow bg-white/[0.01]">
+                    <div class="absolute -top-8 left-8 w-16 h-16 rounded-full border-4 border-[#0a0a0a] overflow-hidden bg-gray-800 shadow-lg flex items-center justify-center">
+                        <img src="/public/images/Author.jpg" alt="ASCEND Author" class="w-full h-full object-cover">
+                    </div>
+                    
+                    <span class="mt-4 text-blue-500 text-xs font-bold uppercase mb-4 block">18 OCT 2026</span>
+                    <h3 class="text-xl font-bold text-white mb-4 leading-tight group-hover:text-[#2563eb] transition-colors duration-300">
+                        AI-Driven "Programming" Over Passive Tracking
+                    </h3>
+                    <p class="text-white/50 text-sm mb-8 flex-grow leading-relaxed">
+                        The era of static workout plans is dead. Learn how AI is transforming passive wearable data into dynamic, real-time strength programming.
+                    </p>
+                    <a href="/blog/ai-driven-programming.html" class="text-[#2563eb] font-bold text-sm uppercase tracking-wider hover:text-blue-400 inline-flex items-center gap-2 mt-auto w-max">
+                        Read Intelligence <span class="text-lg leading-none">»</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="glass-card flex flex-col overflow-hidden group hover:-translate-y-2 transition-transform duration-300">
+                <div class="relative h-[220px] w-full bg-cover bg-center border-b border-white/10" style="background-image: url('images/wearable.jpg');">
+                    <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-300"></div>
+                    <span class="absolute top-4 right-4 bg-[#2563eb] text-white text-[11px] font-bold px-3 py-1.5 rounded-full tracking-wider uppercase">
+                        Product
+                    </span>
+                </div>
+                <div class="p-8 relative flex flex-col flex-grow bg-white/[0.01]">
+                    <div class="absolute -top-8 left-8 w-16 h-16 rounded-full border-4 border-[#0a0a0a] overflow-hidden bg-gray-800 shadow-lg flex items-center justify-center">
+                        <img src="/public/images/Author.jpg" alt="ASCEND Author" class="w-full h-full object-cover">
+                    </div>
+                    
+                    <span class="mt-4 text-blue-500 text-xs font-bold uppercase mb-4 block">09 OCT 2026</span>
+                    <h3 class="text-xl font-bold text-white mb-4 leading-tight group-hover:text-[#2563eb] transition-colors duration-300">
+                        Integrating Wearable Sync for Zero-Latency Output
+                    </h3>
+                    <p class="text-white/50 text-sm mb-8 flex-grow leading-relaxed">
+                        A look into the future of ASCEND: How we are bridging the gap between active training logs and passive smartwatch biometric data.
+                    </p>
+                    <a href="/blog/integrating-wearable-sync.html" class="text-[#2563eb] font-bold text-sm uppercase tracking-wider hover:text-blue-400 inline-flex items-center gap-2 mt-auto w-max">
+                        Read Intelligence <span class="text-lg leading-none">»</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="py-20 bg-[#030303] border-t border-white/10">
+        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-5 gap-10 mb-20">
+            <div class="col-span-1 md:col-span-2">
+                <div class="text-[30px] font-black tracking-widest uppercase mb-4 text-white">ASCEND</div>
+                <p class="text-[14px] text-white/60 max-w-[280px] leading-relaxed">The performance operating system engineered strictly for serious, data-driven athletes.</p>
+            </div>
+            <div>
+                <h4 class="text-[16px] font-bold text-white mb-6">Platform</h4>
+                <div class="flex flex-col gap-3 text-[14px] text-white/60">
+                    <a href="/#features" class="hover:text-[#2563eb] transition-colors">Home</a>
+                    <a href="/#performance" class="hover:text-[#2563eb] transition-colors">Telemetry</a>
+                    <a href="/#experience" class="hover:text-[#2563eb] transition-colors">Testimonials</a>
+                    <a href="https://ascend1-silk.vercel.app/public/app/Ascend.apk" class="hover:text-[#2563eb] transition-colors">Download App</a>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-[16px] font-bold text-white mb-6">Company</h4>
+                <div class="flex flex-col gap-3 text-[14px] text-white/60">
+                    <a href="/blog.html" class="hover:text-[#2563eb] transition-colors">Blog</a>
+                    <a href="#" class="hover:text-[#2563eb] transition-colors">About Us</a>
+                    <a href="#" class="hover:text-[#2563eb] transition-colors">Careers</a>
+                    <a href="#" class="hover:text-[#2563eb] transition-colors">Press Kit</a>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-[16px] font-bold text-white mb-6">Legal</h4>
+                <div class="flex flex-col gap-3 text-[14px] text-white/60">
+                    <a href="#" class="hover:text-[#2563eb] transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-[#2563eb] transition-colors">Terms of Service</a>
+                    <a href="#" class="hover:text-[#2563eb] transition-colors">Data Security</a>
+                    <a href="#" class="hover:text-[#2563eb] transition-colors">Contact Support</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center border-t border-white/10 pt-8 text-[13px] text-white/60">
+            <p>© 2026 ASCEND Performance OS. All rights reserved.</p>
+            <div class="flex gap-4 mt-4 md:mt-0">
+                <a href="#" class="hover:text-white transition-colors">Twitter (X)</a>
+                <a href="#" class="hover:text-white transition-colors">Instagram</a>
+                <a href="#" class="hover:text-white transition-colors">YouTube</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
