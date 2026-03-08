@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>ASCEND — Elite Fitness Operating System</title>
+    <meta name="description" content="ASCEND is the elite performance operating system for serious athletes. Track kinematic load, optimize CNS recovery, and crush your personal records with AI-driven intelligence.">
+    <meta name="keywords" content="fitness operating system, workout tracker app, elite athlete tracking, kinematic load tracker, CNS recovery, fitness AI, strength training app, personal record tracker">
+    <meta name="author" content="ASCEND Performance OS">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="theme-color" content="#000000">
+    <link rel="canonical" href="https://ascend1-silk.vercel.app/" />
+
+    <meta property="og:site_name" content="ASCEND">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="ASCEND — Elite Fitness Operating System">
+    <meta property="og:description" content="The performance operating system for serious athletes. Stop guessing. Start tracking kinematic load and CNS fatigue.">
+    <meta property="og:url" content="https://ascend1-silk.vercel.app/">
+    <meta property="og:image" content="https://ascend1-silk.vercel.app/images/cns.jpg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ASCEND — Elite Fitness Operating System">
+    <meta name="twitter:description" content="The performance operating system for serious athletes. Upgrade your training intelligence today.">
+    <meta name="twitter:image" content="https://ascend1-silk.vercel.app/images/cns.jpg">
+
+    <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+    <link rel="preload" href="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260217_030345_246c0224-10a4-422c-b324-070b7c0eceda.mp4" as="video" type="video/mp4">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "ASCEND",
+      "operatingSystem": "Android",
+      "applicationCategory": "HealthAndFitnessApplication",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "ratingCount": "1250"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0.00",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+
+    <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --bg-base: #000000;
+            --primary: #2563eb; 
+            --accent: #FF3B81;
+            --power: #FFB800;
+            --text-muted: rgba(255, 255, 255, 0.6);
+            --text-main: #FFFFFF;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --font-main: 'General Sans', sans-serif;
+            --ease: cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        /* ORIGINAL NAVBAR CSS - Do not touch */
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 100;
+            transition: all 0.6s var(--ease);
+        }
+        nav.scrolled {
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .glass-card {
+            background: var(--glass-bg); backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border); border-radius: 20px;
+        }
+        
+        #scroll-progress {
+            position: fixed; top: 0; left: 0; width: 0%; height: 2px;
+            background: var(--primary); z-index: 10000;
+        }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s var(--ease); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .progress-fill { transition: stroke-dashoffset 1.5s cubic-bezier(0.22, 1, 0.36, 1); }
+
+        /* Continuous Phone Float Animations */
+        @keyframes phoneFloat {
+            0%, 100% { transform: translateY(0) rotate(-3deg); }
+            50% { transform: translateY(-15px) rotate(-3deg); }
+        }
+        @keyframes phoneFloatDelayed {
+            0%, 100% { transform: translateY(0) rotate(3deg); }
+            50% { transform: translateY(-15px) rotate(3deg); }
+        }
+        .animate-phone-float { animation: phoneFloat 6s ease-in-out infinite; }
+        .animate-phone-float-delayed { animation: phoneFloatDelayed 6s ease-in-out infinite; animation-delay: 1.5s; }
+
+        .phone-mockup { transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease); }
+        .phone-container:hover .phone-mockup {
+            animation: none !important;
+            transform: translateY(-10px) rotate(0deg) scale(1.05) !important;
+            box-shadow: 0 30px 60px rgba(37, 99, 235, 0.3) !important;
+            z-index: 50;
+        }
+
+        /* Slider */
+        .slider-track { 
+            display: flex; width: max-content; animation: scroll 30s linear infinite; 
+        }
+        .slider-track:hover { animation-play-state: paused; }
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        .bar-fill {
+            width: 100%; background: linear-gradient(180deg, var(--primary) 0%, rgba(37, 99, 233, 0.1) 100%);
+            border-radius: 6px 6px 0 0; transform-origin: bottom; transform: scaleY(0); 
+            transition: transform 1.2s var(--ease);
+        }
+        .active .bar-fill { transform: scaleY(var(--h)); }
+    </style>
+</head>
+<body id="home">
+
+    <div id="scroll-progress"></div>
+
+    <nav id="navbar" class="px-6 md:px-[120px] py-[20px]">
+        <div class="flex items-center justify-between">
+            <a href="#home" class="text-[24px] font-bold tracking-tighter text-white no-underline">ASCEND</a>
+            
+            <div class="flex items-center space-x-[40px]">
+                <div class="hidden md:flex items-center space-x-[30px]">
+                    <a href="#features" class="text-[14px] font-medium opacity-70 hover:opacity-100 transition-opacity">Features</a>
+                    <a href="#performance" class="text-[14px] font-medium opacity-70 hover:opacity-100 transition-opacity">Performance</a>
+                    <a href="#experience" class="text-[14px] font-medium opacity-70 hover:opacity-100 transition-opacity">Experience</a>
+                    <a href="/blog.html" class="text-[14px] font-medium opacity-70 hover:opacity-100 transition-opacity">Blog</a>
+                </div>
+                
+                <a href="https://ascend1-silk.vercel.app/public/app/Ascend.apk" class="px-[29px] py-[11px] rounded-full border border-white/40 bg-transparent text-[14px] font-medium text-white uppercase tracking-wider transition-all duration-300 shadow-[0_0_15px_rgba(37,99,235,0.4)] hover:bg-[#2563eb] hover:border-[#2563eb] hover:shadow-[0_0_25px_rgba(37,99,235,0.7)]">
+                    Download
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="relative h-screen w-full overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <video autoplay muted loop playsinline class="w-full h-full object-cover" style="object-position: center top;">
+                <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260217_030345_246c0224-10a4-422c-b324-070b7c0eceda.mp4" type="video/mp4">
+            </video>
+            <div class="absolute inset-0 bg-black/60 bg-gradient-to-r from-black/90 via-black/40 to-transparent"></div>
+        </div>
+
+        <div class="relative z-10 w-full h-full px-6 md:px-[120px] flex items-center justify-between">
+            
+            <div class="text-left max-w-xl reveal active pt-20">
+                <h1 class="text-white text-[48px] md:text-[72px] font-bold leading-[1.05] mb-6 tracking-tight">
+                    Train Like an<br>Elite System
+                </h1>
+                <p class="text-white/70 text-[18px] md:text-[20px] mb-8 leading-relaxed max-w-lg">
+                    The performance operating system for serious athletes. Track kinematic load, optimize recovery, and crush personal records, Coming Soon on.
+                </p>
+                
+                <div class="flex flex-wrap items-center gap-4">
+                    <a href="#" class="hover:scale-105 transition-transform duration-300 block">
+                        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" class="h-[44px] w-auto">
+                    </a>
+                    <a href="#" class="hover:scale-105 transition-transform duration-300 block">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" class="h-[44px] w-auto">
+                    </a>
+                </div>
+            </div>
+
+            <div class="relative w-[380px] h-[500px] hidden lg:block phone-container reveal active mt-32">
+                
+                <div class="absolute z-10 w-[220px] h-[460px] animate-phone-float-delayed phone-mockup" style="top: 40px; right: 140px;">
+                    <div class="relative w-full h-full bg-[#050505] rounded-[2.5rem] border-[8px] border-[#1a1a1a] shadow-[0_20px_50px_rgba(0,0,0,0.9)] overflow-hidden ring-1 ring-white/10">
+                        <div class="absolute top-2 inset-x-0 h-[18px] bg-black w-[70px] mx-auto rounded-full z-30 flex items-center justify-between px-1.5">
+                            <div class="w-1.5 h-1.5 rounded-full bg-[#111]"></div>
+                            <div class="w-2.5 h-2.5 rounded-full bg-[#000] border border-white/10"></div>
+                        </div>
+                        <img src="images/ascend-app-stats.jpg" alt="ASCEND Stats Screen" class="w-full h-full object-cover">
+                    </div>
+                </div>
+
+                <div class="absolute z-20 w-[240px] h-[500px] animate-phone-float phone-mockup" style="top: 0px; right: 0px;">
+                    <div class="relative w-full h-full bg-[#050505] rounded-[2.5rem] border-[8px] border-[#1a1a1a] shadow-[-15px_20px_50px_rgba(0,0,0,0.8)] overflow-hidden ring-1 ring-white/10">
+                        <div class="absolute top-2 inset-x-0 h-[18px] bg-black w-[70px] mx-auto rounded-full z-30 flex items-center justify-between px-1.5">
+                            <div class="w-1.5 h-1.5 rounded-full bg-[#111]"></div>
+                            <div class="w-2.5 h-2.5 rounded-full bg-[#000] border border-white/10"></div>
+                        </div>
+                        <img src="images/ascend-app-home.jpg" alt="ASCEND Home Screen" class="w-full h-full object-cover">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-[#050505] relative z-20 border-b border-white/5" id="performance">
+        <div class="container mx-auto px-6 md:px-[120px]">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <div class="bg-[#0a0a0a] border border-white/5 rounded-3xl p-8 flex flex-col reveal group hover:border-white/10 transition-colors">
+                    <div class="flex items-center gap-2 text-white/50 text-xs font-bold uppercase tracking-widest mb-6">
+                        <svg class="w-4 h-4 text-blue-500" fill="currentColor" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                        Performance Focus
+                    </div>
+                    <h3 class="text-3xl font-bold text-white mb-4 leading-tight">Built for<br>speed</h3>
+                    <p class="text-white/50 text-sm mb-10 leading-relaxed">
+                        Stay in flow and get to insights faster. Log your sets, reps, and RPE with interactions that feel instantaneous thanks to smart syncing.
+                    </p>
+                    <div class="w-full mt-auto bg-[#111] rounded-2xl border border-white/5 p-6 shadow-inner relative overflow-hidden group-hover:scale-[1.02] transition-transform duration-500">
+                        <div class="flex justify-between items-center mb-6">
+                            <span class="font-bold text-sm">Today's Workout</span>
+                            <span class="text-emerald-500 text-xs font-bold">In Progress</span>
+                        </div>
+                        <div class="bg-white/5 rounded-xl p-4 mb-3">
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="text-sm font-bold">Barbell Bench Press</span>
+                                <span class="text-sm font-bold">100 kg</span>
+                            </div>
+                            <div class="flex justify-between items-center opacity-50">
+                                <span class="text-xs">3 sets × 8 reps</span>
+                                <span class="text-xs text-emerald-500">+5 kg</span>
+                            </div>
+                        </div>
+                        <div class="bg-white/5 rounded-xl p-4">
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="text-sm font-bold">Incline Dumbbell</span>
+                                <span class="text-sm font-bold">40 kg</span>
+                            </div>
+                            <div class="flex justify-between items-center opacity-50">
+                                <span class="text-xs">3 sets × 10 reps</span>
+                                <span class="text-xs">Same</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-[#0a0a0a] border border-white/5 rounded-3xl p-8 flex flex-col reveal group hover:border-white/10 transition-colors">
+                    <div class="flex items-center gap-2 text-white/50 text-xs font-bold uppercase tracking-widest mb-6">
+                        <svg class="w-4 h-4 text-pink-500" fill="currentColor" viewBox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                        Volume Tracking
+                    </div>
+                    <h3 class="text-3xl font-bold text-white mb-4 leading-tight">Track kinematic<br>load effortlessly</h3>
+                    <p class="text-white/50 text-sm mb-10 leading-relaxed">
+                        Monitor your total training volume with precision and visualize your daily progress toward optimal strength and hypertrophy.
+                    </p>
+                    <div class="w-full mt-auto bg-[#111] rounded-2xl border border-white/5 p-6 shadow-inner relative overflow-hidden group-hover:scale-[1.02] transition-transform duration-500 flex flex-col items-center justify-center">
+                        <div class="relative w-32 h-32 mb-6 mt-4">
+                            <svg class="absolute inset-0 w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+                                <circle cx="50" cy="50" r="40" stroke="#333" stroke-width="10" fill="transparent"/>
+                                <circle cx="50" cy="50" r="40" stroke="#FF3B81" stroke-width="10" fill="transparent" stroke-dasharray="251" stroke-dashoffset="60" stroke-linecap="round" class="progress-fill"/>
+                            </svg>
+                            <svg class="absolute inset-0 w-full h-full transform -rotate-90 scale-75" viewBox="0 0 100 100">
+                                <circle cx="50" cy="50" r="40" stroke="#333" stroke-width="13" fill="transparent"/>
+                                <circle cx="50" cy="50" r="40" stroke="#FFB800" stroke-width="13" fill="transparent" stroke-dasharray="251" stroke-dashoffset="100" stroke-linecap="round" class="progress-fill"/>
+                            </svg>
+                            <svg class="absolute inset-0 w-full h-full transform -rotate-90 scale-50" viewBox="0 0 100 100">
+                                <circle cx="50" cy="50" r="40" stroke="#333" stroke-width="20" fill="transparent"/>
+                                <circle cx="50" cy="50" r="40" stroke="#22c55e" stroke-width="20" fill="transparent" stroke-dasharray="251" stroke-dashoffset="40" stroke-linecap="round" class="progress-fill"/>
+                            </svg>
+                        </div>
+                        <div class="flex justify-between w-full text-center mt-2 px-2">
+                            <div><p class="text-[10px] text-white/40 uppercase tracking-wider mb-1">Calories</p><p class="font-bold text-pink-500">576</p></div>
+                            <div><p class="text-[10px] text-white/40 uppercase tracking-wider mb-1">Minutes</p><p class="font-bold text-yellow-500">42</p></div>
+                            <div><p class="text-[10px] text-white/40 uppercase tracking-wider mb-1">Volume</p><p class="font-bold text-green-500">6.6k</p></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-[#0a0a0a] border border-white/5 rounded-3xl p-8 flex flex-col reveal group hover:border-white/10 transition-colors">
+                    <div class="flex items-center gap-2 text-white/50 text-xs font-bold uppercase tracking-widest mb-6">
+                        <svg class="w-4 h-4 text-yellow-500" fill="currentColor" viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                        AI Performance Analysis
+                    </div>
+                    <h3 class="text-3xl font-bold text-white mb-4 leading-tight">Instant PR<br>intelligence</h3>
+                    <p class="text-white/50 text-sm mb-10 leading-relaxed">
+                        Stop guessing your 1-Rep Max. ASCEND automatically graphs your historical progression and detects when you are peaking for a new record.
+                    </p>
+                    <div class="w-full mt-auto bg-[#111] rounded-2xl border border-white/5 p-6 shadow-inner relative overflow-hidden group-hover:scale-[1.02] transition-transform duration-500">
+                        <span class="text-xs font-bold text-white/50 uppercase tracking-widest mb-4 block">Max Weight Progression</span>
+                        <div class="h-24 w-full relative mb-4 flex items-end">
+                            <div class="absolute inset-0 flex flex-col justify-between">
+                                <div class="w-full h-px bg-white/5"></div>
+                                <div class="w-full h-px bg-white/5"></div>
+                                <div class="w-full h-px bg-white/5"></div>
+                            </div>
+                            <svg class="absolute inset-0 w-full h-full" preserveAspectRatio="none" viewBox="0 0 100 100">
+                                <path d="M 10 90 L 40 70 L 70 40 L 95 10" fill="none" stroke="#2563eb" stroke-width="3" vector-effect="non-scaling-stroke"/>
+                                <circle cx="10" cy="90" r="3" fill="#2563eb" />
+                                <circle cx="95" cy="10" r="3" fill="#2563eb" />
+                            </svg>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2">
+                            <div class="bg-white/5 rounded-lg p-3 text-center">
+                                <p class="text-[10px] text-white/40 uppercase mb-1 tracking-wider">Max Weight</p>
+                                <p class="font-bold text-pink-500 text-sm">200 kg</p>
+                            </div>
+                            <div class="bg-white/5 rounded-lg p-3 text-center">
+                                <p class="text-[10px] text-white/40 uppercase mb-1 tracking-wider">Max Volume</p>
+                                <p class="font-bold text-green-500 text-sm">6.0k</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-black border-b border-white/5 text-center reveal">
+        <div class="container mx-auto px-6 md:px-[120px] max-w-5xl">
+            <h2 class="text-3xl md:text-5xl font-bold mb-16 leading-tight text-white tracking-tight">
+                Perfectly integrated with the software<br>that already powers your infrastructure<span class="text-red-500">.</span>
+            </h2>
+            
+            <div class="flex flex-wrap justify-center items-center gap-4 md:gap-6">
+                <div class="bg-white text-black px-6 py-3 rounded-full flex items-center justify-center shadow-lg hover:-translate-y-1 transition-transform cursor-pointer">
+                    <span class="font-bold text-sm flex items-center gap-2">
+                        <span class="text-pink-500 text-lg leading-none">❤️</span> Apple Health
+                    </span>
+                </div>
+                <div class="bg-white text-[#FC4C02] px-6 py-3 rounded-full flex items-center justify-center shadow-lg hover:-translate-y-1 transition-transform cursor-pointer">
+                    <span class="font-black text-sm tracking-widest">STRAVA</span>
+                </div>
+                <div class="bg-white px-6 py-3 rounded-full flex items-center justify-center shadow-lg hover:-translate-y-1 transition-transform cursor-pointer">
+                    <span class="bg-black text-white font-black text-[11px] tracking-widest px-3 py-1 rounded-sm">WHOOP</span>
+                </div>
+                <div class="bg-white text-black px-6 py-3 rounded-full flex items-center justify-center shadow-lg hover:-translate-y-1 transition-transform cursor-pointer">
+                    <span class="font-black text-sm tracking-widest">GARMIN</span>
+                </div>
+                <div class="bg-white text-[#00B0B9] px-6 py-3 rounded-full flex items-center justify-center shadow-lg hover:-translate-y-1 transition-transform cursor-pointer">
+                    <span class="font-bold text-lg flex items-center gap-1">
+                        <span class="text-2xl leading-none -mt-1">⁘</span> fitbit
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 container mx-auto px-6 md:px-[120px]" id="features">
+        <div class="text-center mb-12 reveal">
+            <h2 class="text-4xl font-bold mb-4">Weekly Performance</h2>
+        </div>
+        <div class="glass-card h-[400px] flex items-end justify-between p-12 reveal">
+            <div class="w-[8%] h-full flex flex-col justify-end items-center"><div class="bar-fill" style="--h: 0.85; height: 100%;"></div><span class="mt-4 text-xs font-bold opacity-50">85%</span></div>
+            <div class="w-[8%] h-full flex flex-col justify-end items-center"><div class="bar-fill" style="--h: 0.60; height: 100%;"></div><span class="mt-4 text-xs font-bold opacity-50">60%</span></div>
+            <div class="w-[8%] h-full flex flex-col justify-end items-center"><div class="bar-fill" style="--h: 0.90; height: 100%;"></div><span class="mt-4 text-xs font-bold opacity-50">90%</span></div>
+            <div class="w-[8%] h-full flex flex-col justify-end items-center"><div class="bar-fill" style="--h: 0.45; height: 100%;"></div><span class="mt-4 text-xs font-bold opacity-50">45%</span></div>
+            <div class="w-[8%] h-full flex flex-col justify-end items-center"><div class="bar-fill" style="--h: 0.75; height: 100%;"></div><span class="mt-4 text-xs font-bold opacity-50">75%</span></div>
+            <div class="w-[8%] h-full flex flex-col justify-end items-center"><div class="bar-fill" style="--h: 1.00; height: 100%;"></div><span class="mt-4 text-xs font-bold opacity-50">100%</span></div>
+            <div class="w-[8%] h-full flex flex-col justify-end items-center"><div class="bar-fill" style="--h: 0.30; height: 100%;"></div><span class="mt-4 text-xs font-bold opacity-50">30%</span></div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-white/[0.02] overflow-hidden" id="experience">
+        <div class="slider-track">
+            <article class="w-[450px] shrink-0 glass-card p-10 mr-[24px]">
+                <p class="italic opacity-80 mb-8 text-lg">"Clean, fast, and engineered to perfection. I don't train without it."</p>
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-full overflow-hidden bg-white/10 shrink-0">
+                        <img src="/public/images/person1.jpg" alt="M. Davis" class="w-full h-full object-cover">
+                    </div>
+                    <div><p class="font-bold">M. Davis</p><p class="text-xs opacity-50">CrossFit Athlete</p></div>
+                </div>
+            </article>
+            <article class="w-[450px] shrink-0 glass-card p-10 mr-[24px]">
+                <p class="italic opacity-80 mb-8 text-lg">"The telemetry is flawless. ASCEND replaced three different tracking systems."</p>
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-full overflow-hidden bg-white/10 shrink-0">
+                        <img src="/public/images/person2.jpg" alt="J. Miller" class="w-full h-full object-cover">
+                    </div>
+                    <div><p class="font-bold">J. Miller</p><p class="text-xs opacity-50">Triathlete</p></div>
+                </div>
+            </article>
+            <article class="w-[450px] shrink-0 glass-card p-10 mr-[24px]">
+                <p class="italic opacity-80 mb-8 text-lg">"Recovery analytics are strictly tier-one. It's like a performance engineer in my pocket."</p>
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-full overflow-hidden bg-white/10 shrink-0">
+                        <img src="/public/images/person3.jpg" alt="S. Chen" class="w-full h-full object-cover">
+                    </div>
+                    <div><p class="font-bold">S. Chen</p><p class="text-xs opacity-50">Powerlifter</p></div>
+                </div>
+            </article>
+            <article class="w-[450px] shrink-0 glass-card p-10 mr-[24px]">
+                <p class="italic opacity-80 mb-8 text-lg">"Clean, fast, and engineered to perfection. I don't train without it."</p>
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-full overflow-hidden bg-white/10 shrink-0">
+                        <img src="/public/images/person1.jpg" alt="M. Davis" class="w-full h-full object-cover">
+                    </div>
+                    <div><p class="font-bold">M. Davis</p><p class="text-xs opacity-50">CrossFit Athlete</p></div>
+                </div>
+            </article>
+            <article class="w-[450px] shrink-0 glass-card p-10 mr-[24px]">
+                <p class="italic opacity-80 mb-8 text-lg">"The telemetry is flawless. ASCEND replaced three different tracking systems."</p>
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-full overflow-hidden bg-white/10 shrink-0">
+                        <img src="/public/images/person2.jpg" alt="J. Miller" class="w-full h-full object-cover">
+                    </div>
+                    <div><p class="font-bold">J. Miller</p><p class="text-xs opacity-50">Triathlete</p></div>
+                </div>
+            </article>
+            <article class="w-[450px] shrink-0 glass-card p-10 mr-[24px]">
+                <p class="italic opacity-80 mb-8 text-lg">"Recovery analytics are strictly tier-one. It's like a performance engineer in my pocket."</p>
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-full overflow-hidden bg-white/10 shrink-0">
+                        <img src="/public/images/person3.jpg" alt="S. Chen" class="w-full h-full object-cover">
+                    </div>
+                    <div><p class="font-bold">S. Chen</p><p class="text-xs opacity-50">Powerlifter</p></div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <section class="py-24 container mx-auto px-6 md:px-[120px]" id="blog">
+        <h2 class="text-3xl font-bold mb-12 text-center reveal">System Insights</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          
+          <!-- BLOG_CARDS_MARKER -->
+            
+            <article class="glass-card flex flex-col overflow-hidden group hover:-translate-y-2 transition-transform duration-300 reveal">
+                <div class="relative h-56 w-full bg-cover bg-center border-b border-white/10" style="background-image: url('images/cns.jpg');">
+                    <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-300"></div>
+                    <span class="absolute top-4 right-4 bg-[#2563eb] text-white text-[11px] font-bold px-4 py-1.5 rounded-full tracking-wider uppercase">BLOG</span>
+                    <div class="absolute -bottom-6 left-6 w-14 h-14 rounded-full border-4 border-[#000] overflow-hidden bg-gray-800 z-10">
+                        <img src="/public/images/Author.jpg" alt="Author" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="p-8 pt-10 flex flex-col flex-grow relative bg-white/[0.01]">
+                    <h3 class="text-xl font-bold text-white mb-3 leading-tight group-hover:text-[#2563eb] transition-colors duration-300">Optimizing CNS Recovery with Predictive Biometrics</h3>
+                    <p class="text-white/50 text-sm mb-6 flex-grow leading-relaxed">Discover how elite strength athletes use predictive biometrics and telemetry to measure Central Nervous System fatigue and prevent overtraining.</p>
+                    <a href="/blog/optimizing-cns-recovery.html" class="text-[#2563eb] font-bold text-sm uppercase tracking-wider hover:text-blue-400 mt-auto w-max">READ MORE »</a>
+                </div>
+            </article>
+
+            <article class="glass-card flex flex-col overflow-hidden group hover:-translate-y-2 transition-transform duration-300 reveal">
+                <div class="relative h-56 w-full bg-cover bg-center border-b border-white/10" style="background-image: url('images/math.jpg');">
+                    <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-300"></div>
+                    <span class="absolute top-4 right-4 bg-[#2563eb] text-white text-[11px] font-bold px-4 py-1.5 rounded-full tracking-wider uppercase">BLOG</span>
+                    <div class="absolute -bottom-6 left-6 w-14 h-14 rounded-full border-4 border-[#000] overflow-hidden bg-gray-800 z-10">
+                        <img src="/public/images/Author.jpg" alt="Author" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="p-8 pt-10 flex flex-col flex-grow relative bg-white/[0.01]">
+                    <h3 class="text-xl font-bold text-white mb-3 leading-tight group-hover:text-[#2563eb] transition-colors duration-300">AI-Driven "Programming" Over Passive Tracking</h3>
+                    <p class="text-white/50 text-sm mb-6 flex-grow leading-relaxed">The era of static workout plans is dead. Learn how AI is transforming passive wearable data into dynamic, real-time strength programming.</p>
+                    <a href="/blog/ai-driven-programming.html" class="text-[#2563eb] font-bold text-sm uppercase tracking-wider hover:text-blue-400 mt-auto w-max">READ MORE »</a>
+                </div>
+            </article>
+
+            <article class="glass-card flex flex-col overflow-hidden group hover:-translate-y-2 transition-transform duration-300 reveal">
+                <div class="relative h-56 w-full bg-cover bg-center border-b border-white/10" style="background-image: url('images/wearable.jpg');">
+                    <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-300"></div>
+                    <span class="absolute top-4 right-4 bg-[#2563eb] text-white text-[11px] font-bold px-4 py-1.5 rounded-full tracking-wider uppercase">BLOG</span>
+                    <div class="absolute -bottom-6 left-6 w-14 h-14 rounded-full border-4 border-[#000] overflow-hidden bg-gray-800 z-10">
+                        <img src="/public/images/Author.jpg" alt="Author" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="p-8 pt-10 flex flex-col flex-grow relative bg-white/[0.01]">
+                    <h3 class="text-xl font-bold text-white mb-3 leading-tight group-hover:text-[#2563eb] transition-colors duration-300">Integrating Wearable Sync for Zero-Latency Output</h3>
+                    <p class="text-white/50 text-sm mb-6 flex-grow leading-relaxed">A look into the future of ASCEND: How we are bridging the gap between active training logs and passive smartwatch biometric data.</p>
+                    <a href="/blog/integrating-wearable-sync.html" class="text-[#2563eb] font-bold text-sm uppercase tracking-wider hover:text-blue-400 mt-auto w-max">READ MORE »</a>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <section class="py-32 text-center bg-[#0a0a0a] border-t border-white/10">
+        <h2 class="text-[52px] font-bold mb-10 leading-[1.2] reveal">Upgrade Your<br>Training Intelligence</h2>
+        <a href="https://ascend1-silk.vercel.app/public/app/Ascend.apk" class="inline-block bg-[#2563eb] text-white px-10 py-4 rounded-full font-bold text-[15px] shadow-[0_0_25px_rgba(37,99,235,0.4)] hover:shadow-[0_0_40px_rgba(37,99,235,0.6)] hover:-translate-y-1 transition-all duration-300">
+            Download App
+        </a>
+    </section>
+
+    <footer class="py-20 bg-[#030303] border-t border-white/10">
+        <div class="container mx-auto px-6 md:px-[120px] grid grid-cols-1 md:grid-cols-5 gap-10 mb-20">
+            <div class="col-span-1 md:col-span-2">
+                <div class="text-[30px] font-black tracking-widest uppercase mb-4">ASCEND</div>
+                <p class="text-[14px] text-white/60 max-w-[280px] leading-relaxed">The performance operating system engineered strictly for serious, data-driven athletes.</p>
+            </div>
+            <div>
+                <h4 class="text-[16px] font-bold text-white mb-6">Platform</h4>
+                <div class="flex flex-col gap-3 text-[14px] text-white/60">
+                    <a href="#features" class="hover:text-[#2563eb] transition-colors">Features</a>
+                    <a href="#performance" class="hover:text-[#2563eb] transition-colors">Telemetry</a>
+                    <a href="#experience" class="hover:text-[#2563eb] transition-colors">Testimonials</a>
+                    <a href="https://ascend1-silk.vercel.app/public/app/Ascend.apk" class="hover:text-[#2563eb] transition-colors">Download App</a>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-[16px] font-bold text-white mb-6">Company</h4>
+                <div class="flex flex-col gap-3 text-[14px] text-white/60">
+                    <a href="/blog.html" class="hover:text-[#2563eb] transition-colors">Blog</a>
+                    <a href="#" class="hover:text-[#2563eb] transition-colors">About Us</a>
+                    <a href="#" class="hover:text-[#2563eb] transition-colors">Careers</a>
+                    <a href="#" class="hover:text-[#2563eb] transition-colors">Press Kit</a>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-[16px] font-bold text-white mb-6">Legal</h4>
+                <div class="flex flex-col gap-3 text-[14px] text-white/60">
+                    <a href="#" class="hover:text-[#2563eb] transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-[#2563eb] transition-colors">Terms of Service</a>
+                    <a href="#" class="hover:text-[#2563eb] transition-colors">Data Security</a>
+                    <a href="#" class="hover:text-[#2563eb] transition-colors">Contact Support</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container mx-auto px-6 md:px-[120px] flex flex-col md:flex-row justify-between items-center border-t border-white/10 pt-8 text-[13px] text-white/60">
+            <p>© 2026 ASCEND Performance OS. All rights reserved.</p>
+            <div class="flex gap-4 mt-4 md:mt-0">
+                <a href="#" class="hover:text-white transition-colors">Twitter (X)</a>
+                <a href="#" class="hover:text-white transition-colors">Instagram</a>
+                <a href="#" class="hover:text-white transition-colors">YouTube</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const animateValue = (obj, start, end, duration) => {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const easeOut = 1 - Math.pow(1 - progress, 4);
+                obj.innerHTML = Math.floor(easeOut * (end - start) + start).toLocaleString();
+                if (progress < 1) window.requestAnimationFrame(step);
+            };
+            window.requestAnimationFrame(step);
+        };
+
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            const progress = document.getElementById('scroll-progress');
+            const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            progress.style.width = scrollPercent + '%';
+            if (window.scrollY > 50) navbar.classList.add('scrolled');
+            else navbar.classList.remove('scrolled');
+        });
+
+        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
+        const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    el.classList.add('active'); 
+
+                    if (el.classList.contains('metric-card')) {
+                        const numEl = el.querySelector('.metric-value');
+                        if (numEl) {
+                            const targetVal = parseInt(numEl.getAttribute('data-target'));
+                            animateValue(numEl, 0, targetVal, 2000);
+                        }
+
+                        const ring = el.querySelector('.progress-fill');
+                        if (ring) {
+                            const percent = parseInt(ring.getAttribute('data-percent'));
+                            const offset = 214 - (percent / 100) * 214; 
+                            setTimeout(() => { ring.style.strokeDashoffset = offset; }, 100);
+                        }
+                    }
+                    obs.unobserve(el);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
