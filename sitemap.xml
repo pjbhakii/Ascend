@@ -114,6 +114,18 @@
     <image:title>How Long Should a Gym Session Last</image:title>
   </image:image>
 </url>
-    <!-- BLOG_SITEMAP_MARKER -->
+    
+  <url>
+    <loc>https://www.ascendapp.in/blog/creatine-pre-workout-or-programming-what-actually-makes-you-stronger-faster.html</loc>
+    <lastmod>2026-03-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.ascendapp.in/images/supplements-vs-data.jpg</image:loc>
+      <image:title>Creatine, Pre-workout, or Programming: What actually makes you stronger faster?</image:title>
+    </image:image>
+  </url>
+
+  <!-- BLOG_SITEMAP_MARKER -->
 
 </urlset>
