@@ -74,7 +74,46 @@
             <image:title>Integrating Wearable Sync for Zero-Latency Output</image:title>
         </image:image>
     </url>
+<url>
+  <loc>https://www.ascendapp.in/about</loc>
+  <lastmod>2026-03-13</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.6</priority>
+</url>
 
+<url>
+  <loc>https://www.ascendapp.in/privacy-policy</loc>
+  <lastmod>2026-03-13</lastmod>
+  <changefreq>yearly</changefreq>
+  <priority>0.3</priority>
+</url>
+
+<url>
+  <loc>https://www.ascendapp.in/terms-of-service</loc>
+  <lastmod>2026-03-13</lastmod>
+  <changefreq>yearly</changefreq>
+  <priority>0.3</priority>
+</url> 
+        <url>
+  <loc>https://www.ascendapp.in/blog/why-is-my-bench-press-stuck-and-exactly-how-to-break-through-a-strength-plateau.html</loc>
+  <lastmod>2026-03-11</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.8</priority>
+  <image:image>
+    <image:loc>https://www.ascendapp.in/images/bench-plateau.jpg</image:loc>
+    <image:title>Why Is My Bench Press Stuck</image:title>
+  </image:image>
+</url> 
+        <url>
+  <loc>https://www.ascendapp.in/blog/how-long-should-a-gym-session-last-if-you-want-to-build-muscle-without-overtraining.html</loc>
+  <lastmod>2026-03-09</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.8</priority>
+  <image:image>
+    <image:loc>https://www.ascendapp.in/images/biceps.jpg</image:loc>
+    <image:title>How Long Should a Gym Session Last</image:title>
+  </image:image>
+</url>
     <!-- BLOG_SITEMAP_MARKER -->
 
 </urlset>

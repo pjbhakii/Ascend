@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Privacy Policy | ASCEND Performance OS</title>
+    <meta name="description" content="ASCEND Privacy Policy — learn how we collect, use, and protect your personal data when you use the ASCEND fitness performance app.">
+    <meta name="author" content="ASCEND Performance OS">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#000000">
+    <link rel="canonical" href="https://www.ascendapp.in/privacy-policy" />
+    <link rel="icon" type="image/png" href="/images/favicon.png">
+
+    <meta property="og:site_name" content="ASCEND">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Privacy Policy | ASCEND Performance OS">
+    <meta property="og:description" content="ASCEND Privacy Policy — learn how we collect, use, and protect your personal data.">
+    <meta property="og:url" content="https://www.ascendapp.in/privacy-policy">
+    <meta property="og:image" content="https://www.ascendapp.in/images/cns.jpg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Privacy Policy | ASCEND Performance OS">
+    <meta name="twitter:description" content="ASCEND Privacy Policy — learn how we collect, use, and protect your personal data.">
+    <meta name="twitter:image" content="https://www.ascendapp.in/images/cns.jpg">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PC5VEY8PLE"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-PC5VEY8PLE');
+    </script>
+
+    <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+    <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        :root {
+            --bg-base: #000000;
+            --primary: #2563eb;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --font-main: 'General Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-base);
+            color: #FFFFFF;
+            font-family: var(--font-main);
+            margin: 0;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .ambient-glow {
+            position: fixed;
+            top: -10%; left: 50%; transform: translateX(-50%);
+            width: 80vw; height: 60vh;
+            background: radial-gradient(circle, rgba(37,99,235,0.08) 0%, rgba(0,0,0,0) 70%);
+            z-index: -1; pointer-events: none;
+        }
+
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 100;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+        }
+
+        #scroll-progress {
+            position: fixed; top: 0; left: 0; width: 0%; height: 2px;
+            background: var(--primary); z-index: 10000;
+            transition: width 0.1s linear;
+        }
+
+        body::before {
+            content: '';
+            position: fixed; inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none; z-index: -1; opacity: 0.4;
+        }
+
+        .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .policy-content h2 {
+            color: #ffffff;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            scroll-margin-top: 100px;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .policy-content p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 1.25rem;
+        }
+        .policy-content ul {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 1.25rem;
+            padding-left: 1.5rem;
+        }
+        .policy-content li { margin-bottom: 0.5rem; }
+        .policy-content strong { color: #ffffff; }
+        .policy-content a { color: var(--primary); text-decoration: none; }
+        .policy-content a:hover { text-decoration: underline; }
+
+        .toc-links ul { list-style: none; padding: 0; }
+        .toc-links li { margin-bottom: 0.75rem; }
+        .toc-links a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+        .toc-links a:hover { color: var(--primary); }
+    </style>
+</head>
+<body id="top">
+
+    <div id="scroll-progress"></div>
+    <div class="ambient-glow"></div>
+
+    <nav id="navbar" class="px-6 md:px-[120px] py-[16px]">
+        <div class="flex items-center justify-between">
+            <a href="/#home" class="text-[24px] font-bold tracking-tighter text-white no-underline">ASCEND</a>
+            <div class="flex items-center space-x-[40px]">
+                <div class="hidden md:flex items-center space-x-[30px]">
+                    <a href="/#features" class="text-[14px] font-medium opacity-70 hover:opacity-100 transition-opacity">Home</a>
+                    <a href="/#performance" class="text-[14px] font-medium opacity-70 hover:opacity-100 transition-opacity">Performance</a>
+                    <a href="/#experience" class="text-[14px] font-medium opacity-70 hover:opacity-100 transition-opacity">Experience</a>
+                    <a href="/blog.html" class="text-[14px] font-medium opacity-70 hover:opacity-100 transition-opacity">Blog</a>
+                </div>
+                <a href="https://ascend1-silk.vercel.app/public/app/Ascend.apk" class="px-[29px] py-[11px] rounded-full border border-white/40 bg-transparent text-[14px] font-medium text-white uppercase tracking-wider transition-all duration-300 hover:bg-[#2563eb] hover:border-[#2563eb] hover:shadow-[0_0_20px_rgba(37,99,235,0.5)]">
+                    Download
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="pt-[140px] pb-10 px-6 max-w-5xl mx-auto">
+        <div class="mb-6 flex items-center gap-4 reveal active">
+            <a href="/" class="text-white/50 hover:text-white text-sm transition-colors">← Back to Home</a>
+            <span class="text-white/20">|</span>
+            <span class="text-[#2563eb] font-bold text-[11px] tracking-wider uppercase bg-[#2563eb]/10 px-3 py-1 rounded-full">Legal</span>
+        </div>
+
+        <h1 class="text-[40px] md:text-[52px] font-bold leading-[1.1] mb-8 text-white tracking-tight reveal active" style="transition-delay:0.05s">
+            Privacy Policy
+        </h1>
+
+        <div class="flex items-center gap-4 mb-10 reveal active" style="transition-delay:0.1s">
+            <div class="w-12 h-12 rounded-full border-2 border-white/10 overflow-hidden bg-gray-800 flex items-center justify-center">
+                <span class="text-white font-bold text-lg">A</span>
+            </div>
+            <div>
+                <p class="font-bold text-sm">ASCEND Performance OS</p>
+                <p class="text-xs text-white/50">Effective: 13 Mar 2026 · Last Updated: 13 Mar 2026</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 pb-32 flex flex-col md:flex-row gap-12 relative">
+
+        <aside class="md:w-1/3 relative hidden md:block">
+            <div class="sticky top-[120px] glass-card p-6">
+                <h4 class="text-sm font-bold uppercase tracking-widest text-white/50 mb-4 border-b border-white/10 pb-3">Jump To Section</h4>
+                <div class="toc-links">
+                    <ul>
+                        <li><a href="#section-overview">Overview</a></li>
+                        <li><a href="#section-data-collected">Data We Collect</a></li>
+                        <li><a href="#section-how-used">How We Use Your Data</a></li>
+                        <li><a href="#section-third-party">Third-Party Services</a></li>
+                        <li><a href="#section-analytics">Analytics & Tracking</a></li>
+                        <li><a href="#section-storage">Data Storage & Security</a></li>
+                        <li><a href="#section-rights">Your Rights</a></li>
+                        <li><a href="#section-children">Children's Privacy</a></li>
+                        <li><a href="#section-changes">Changes to This Policy</a></li>
+                        <li><a href="#section-contact">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </aside>
+
+        <article class="md:w-2/3 policy-content reveal active" style="transition-delay:0.2s">
+
+            <h2 id="section-overview">Overview</h2>
+            <p>Welcome to ASCEND — the AI-powered fitness performance operating system for serious athletes. This Privacy Policy explains how ASCEND Performance OS ("we", "us", or "our") collects, uses, stores, and protects your personal information when you use our website at <a href="https://www.ascendapp.in">ascendapp.in</a> and our Android application.</p>
+            <p>By accessing or using ASCEND, you agree to the terms described in this policy. If you do not agree, please discontinue use of our services.</p>
+
+            <h2 id="section-data-collected">Data We Collect</h2>
+            <p>We collect data to provide you with a personalised and optimised training experience. The information we may collect includes:</p>
+            <ul>
+                <li><strong>Account Information:</strong> Name, email address, and password when you register.</li>
+                <li><strong>Fitness & Training Data:</strong> Workout logs, sets, reps, weight, RPE, personal records, kinematic load metrics, and CNS recovery scores you enter into the app.</li>
+                <li><strong>Device Information:</strong> Device model, operating system version, unique device identifiers, and crash reports.</li>
+                <li><strong>Usage Data:</strong> Pages visited, features used, session duration, and interaction patterns within the app and website.</li>
+                <li><strong>Health Data:</strong> If you connect third-party services such as Apple Health, STRAVA, WHOOP, Garmin, or Fitbit, we may receive biometric and activity data from those platforms subject to your permissions.</li>
+                <li><strong>Communications:</strong> If you contact us via email at <a href="mailto:contact@ascendapp.in">contact@ascendapp.in</a>, we retain those communications to respond to your enquiries.</li>
+            </ul>
+            <p>We do <strong>not</strong> collect payment information directly. Any future transactions will be processed through secure third-party payment providers.</p>
+
+            <h2 id="section-how-used">How We Use Your Data</h2>
+            <p>Your data is used solely to improve your training experience and operate our service. Specifically, we use your data to:</p>
+            <ul>
+                <li>Provide, maintain, and improve the ASCEND app and website.</li>
+                <li>Personalise your training dashboard, PR tracking, and recovery recommendations.</li>
+                <li>Analyse aggregate usage patterns to improve features and performance.</li>
+                <li>Send transactional emails such as account confirmation or support responses.</li>
+                <li>Detect and prevent fraud, abuse, or security incidents.</li>
+                <li>Comply with applicable legal obligations.</li>
+            </ul>
+            <p>We do <strong>not</strong> sell, rent, or trade your personal information to any third party for marketing purposes.</p>
+
+            <h2 id="section-third-party">Third-Party Services</h2>
+            <p>ASCEND integrates with several third-party platforms to enhance your performance tracking. When you connect these services, their own privacy policies govern how they handle your data:</p>
+            <ul>
+                <li><strong>Apple Health</strong> — <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple Privacy Policy</a></li>
+                <li><strong>STRAVA</strong> — <a href="https://www.strava.com/legal/privacy" target="_blank" rel="noopener">Strava Privacy Policy</a></li>
+                <li><strong>WHOOP</strong> — <a href="https://www.whoop.com/us/en/privacy-policy/" target="_blank" rel="noopener">WHOOP Privacy Policy</a></li>
+                <li><strong>Garmin</strong> — <a href="https://www.garmin.com/en-US/privacy/global/statement/" target="_blank" rel="noopener">Garmin Privacy Statement</a></li>
+                <li><strong>Fitbit / Google</strong> — <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a></li>
+            </ul>
+            <p>We only request access to data you explicitly authorise when connecting these services. You may revoke access at any time through your device or third-party account settings.</p>
+
+            <h2 id="section-analytics">Analytics & Tracking</h2>
+            <p>We use <strong>Google Analytics (GA4)</strong> on our website to understand how visitors interact with our content. Google Analytics collects anonymised data such as pages visited, time on page, browser type, and general geographic location. This data is aggregated and does not identify you personally.</p>
+            <p>You can opt out of Google Analytics tracking by installing the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google Analytics Opt-out Browser Add-on</a>.</p>
+            <p>We do not use advertising trackers, retargeting pixels, or any third-party ad networks. ASCEND is an ad-free experience.</p>
+
+            <h2 id="section-storage">Data Storage & Security</h2>
+            <p>Your data is stored on secure servers. We implement industry-standard security measures including encrypted connections (HTTPS/TLS), access controls, and regular security reviews to protect your information from unauthorised access, disclosure, or loss.</p>
+            <p>While we take data security seriously, no system is 100% immune to risk. We encourage you to use a strong, unique password for your ASCEND account and to keep it confidential.</p>
+            <p>Data is retained for as long as your account is active or as needed to provide our services. You may request deletion of your account and associated data at any time by contacting us.</p>
+
+            <h2 id="section-rights">Your Rights</h2>
+            <p>Depending on your location, you may have the following rights regarding your personal data:</p>
+            <ul>
+                <li><strong>Access:</strong> Request a copy of the personal data we hold about you.</li>
+                <li><strong>Correction:</strong> Request that we correct inaccurate or incomplete data.</li>
+                <li><strong>Deletion:</strong> Request that we delete your personal data ("right to be forgotten").</li>
+                <li><strong>Portability:</strong> Request your data in a structured, machine-readable format.</li>
+                <li><strong>Withdrawal of Consent:</strong> Withdraw consent for data processing at any time.</li>
+                <li><strong>Objection:</strong> Object to how we process your data in certain circumstances.</li>
+            </ul>
+            <p>To exercise any of these rights, email us at <a href="mailto:contact@ascendapp.in">contact@ascendapp.in</a>. We will respond within 30 days.</p>
+
+            <h2 id="section-children">Children's Privacy</h2>
+            <p>ASCEND is designed for serious athletes and is not intended for use by individuals under the age of 13. We do not knowingly collect personal information from children under 13. If we become aware that a child under 13 has provided us with personal data, we will delete it promptly. If you believe we may have inadvertently collected such data, please contact us immediately.</p>
+
+            <h2 id="section-changes">Changes to This Policy</h2>
+            <p>We may update this Privacy Policy from time to time as our services evolve. When we make material changes, we will update the "Last Updated" date at the top of this page. We encourage you to review this policy periodically. Continued use of ASCEND after any changes constitutes your acceptance of the updated policy.</p>
+
+            <h2 id="section-contact">Contact Us</h2>
+            <p>If you have any questions, concerns, or requests regarding this Privacy Policy or your personal data, please reach out to us:</p>
+            <ul>
+                <li><strong>Email:</strong> <a href="mailto:contact@ascendapp.in">contact@ascendapp.in</a></li>
+                <li><strong>Website:</strong> <a href="https://www.ascendapp.in">www.ascendapp.in</a></li>
+                <li><strong>Location:</strong> India</li>
+            </ul>
+            <p>We are committed to resolving any privacy concerns promptly and transparently.</p>
+
+        </article>
+    </main>
+
+    <footer class="py-20 bg-[#030303] border-t border-white/10">
+        <div class="container mx-auto px-6 md:px-[120px] grid grid-cols-1 md:grid-cols-5 gap-10 mb-20">
+            <div class="col-span-1 md:col-span-2">
+                <div class="text-[30px] font-black tracking-widest uppercase mb-4 text-white">ASCEND</div>
+                <p class="text-[14px] text-white/60 max-w-[280px] leading-relaxed">The performance operating system engineered strictly for serious, data-driven athletes.</p>
+            </div>
+            <div>
+                <h4 class="text-[16px] font-bold text-white mb-6">Platform</h4>
+                <div class="flex flex-col gap-3 text-[14px] text-white/60">
+                    <a href="/#features" class="hover:text-[#2563eb] transition-colors">Home</a>
+                    <a href="/#performance" class="hover:text-[#2563eb] transition-colors">Telemetry</a>
+                    <a href="/#experience" class="hover:text-[#2563eb] transition-colors">Testimonials</a>
+                    <a href="https://ascend1-silk.vercel.app/public/app/Ascend.apk" class="hover:text-[#2563eb] transition-colors">Download App</a>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-[16px] font-bold text-white mb-6">Company</h4>
+                <div class="flex flex-col gap-3 text-[14px] text-white/60">
+                    <a href="/blog.html" class="hover:text-[#2563eb] transition-colors">Blog</a>
+                    <a href="#" class="hover:text-[#2563eb] transition-colors">About Us</a>
+                    <a href="#" class="hover:text-[#2563eb] transition-colors">Careers</a>
+                    <a href="#" class="hover:text-[#2563eb] transition-colors">Press Kit</a>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-[16px] font-bold text-white mb-6">Legal</h4>
+                <div class="flex flex-col gap-3 text-[14px] text-white/60">
+                    <a href="/privacy-policy" class="text-[#2563eb] transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-[#2563eb] transition-colors">Terms of Service</a>
+                    <a href="#" class="hover:text-[#2563eb] transition-colors">Data Security</a>
+                    <a href="mailto:contact@ascendapp.in" class="hover:text-[#2563eb] transition-colors">Contact Support</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mx-auto px-6 md:px-[120px] flex flex-col md:flex-row justify-between items-center border-t border-white/10 pt-8 text-[13px] text-white/60">
+            <p>© 2026 ASCEND Performance OS. All rights reserved.</p>
+            <div class="flex gap-4 mt-4 md:mt-0">
+                <a href="#" class="hover:text-white transition-colors">Twitter (X)</a>
+                <a href="#" class="hover:text-white transition-colors">Instagram</a>
+                <a href="#" class="hover:text-white transition-colors">YouTube</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            const progress = document.getElementById('scroll-progress');
+            const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            progress.style.width = scrollPercent + '%';
+        });
+
+        const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    obs.unobserve(entry.target);
+                }
+            });
+        }, { root: null, rootMargin: '0px', threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+
+</body>
+</html>
