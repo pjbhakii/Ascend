@@ -126,6 +126,18 @@
     </image:image>
   </url>
 
+  
+  <url>
+    <loc>https://www.ascendapp.in/blog/why-your-random-workouts-are-keeping-you-small-and-how-to-build-a-winning-5-day-split.html</loc>
+    <lastmod>2026-03-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.ascendapp.in/images/workout-plan.jpg</image:loc>
+      <image:title>Why your random workouts are keeping you small and how to build a winning 5-day split</image:title>
+    </image:image>
+  </url>
+
   <!-- BLOG_SITEMAP_MARKER -->
 
 </urlset>
