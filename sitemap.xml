@@ -138,6 +138,18 @@
     </image:image>
   </url>
 
+  
+  <url>
+    <loc>https://www.ascendapp.in/blog/why-is-my-chest-not-growing-even-though-i-work-out.html</loc>
+    <lastmod>2026-03-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.ascendapp.in/images/lagging-chest.jpg</image:loc>
+      <image:title>Why is my chest not growing even though I work out?</image:title>
+    </image:image>
+  </url>
+
   <!-- BLOG_SITEMAP_MARKER -->
 
 </urlset>
