@@ -150,6 +150,18 @@
     </image:image>
   </url>
 
+  
+  <url>
+    <loc>https://www.ascendapp.in/blog/why-am-i-not-sore-after-a-workout-anymore.html</loc>
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.ascendapp.in/images/doms-myth.jpg</image:loc>
+      <image:title>Why am I not sore after a workout anymore</image:title>
+    </image:image>
+  </url>
+
   <!-- BLOG_SITEMAP_MARKER -->
 
 </urlset>
