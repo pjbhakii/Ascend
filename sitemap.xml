@@ -162,6 +162,18 @@
     </image:image>
   </url>
 
+  
+  <url>
+    <loc>https://www.ascendapp.in/blog/why-am-i-suddenly-weaker-in-the-gym-today.html</loc>
+    <lastmod>2026-03-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.ascendapp.in/images/mid-week-fatigue.jpg</image:loc>
+      <image:title>Why am I suddenly weaker in the gym today</image:title>
+    </image:image>
+  </url>
+
   <!-- BLOG_SITEMAP_MARKER -->
 
 </urlset>
