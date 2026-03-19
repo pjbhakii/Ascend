@@ -608,24 +608,25 @@
     </section>
 
     <!-- MAILCHIMP SUBSCRIBE SECTION -->
-<section class="py-20 px-6">
+<section id="subscribe-section" class="py-20 px-6">
     <div class="max-w-2xl mx-auto text-center">
         <p class="text-[#2563eb] font-bold text-[11px] tracking-widest uppercase mb-4">System Insights</p>
         <h2 class="text-[32px] md:text-[40px] font-bold text-white mb-4 leading-tight">Get Performance Intel in Your Inbox</h2>
         <p class="text-white/60 text-[16px] mb-8 leading-relaxed">New training insights, programming breakdowns and ASCEND updates — straight to you. No spam.</p>
-        <form action="https://ascendapp.us5.list-manage.com/subscribe/post?u=d770168eeb741021cf7086183&amp;id=a0fd77353b&amp;f_id=00bbbeedf0" method="post" target="_blank">
+        <div id="subscribe-form">
             <div class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-                <input type="email" name="EMAIL" placeholder="your@email.com" required
+                <input type="email" id="mc-email" placeholder="your@email.com" required
                     class="flex-1 px-5 py-3 rounded-full bg-white/5 border border-white/10 text-white placeholder-white/30 text-[14px] focus:outline-none focus:border-[#2563eb] transition-colors">
                 <div aria-hidden="true" style="position:absolute;left:-5000px;">
-                    <input type="text" name="b_d770168eeb741021cf7086183_a0fd77353b" tabindex="-1" value="">
+                    <input type="text" id="mc-bot" tabindex="-1" value="">
                 </div>
-                <button type="submit"
+                <button onclick="subscribeMailchimp()"
                     class="px-8 py-3 rounded-full bg-[#2563eb] text-white text-[14px] font-bold uppercase tracking-wider hover:shadow-[0_0_20px_rgba(37,99,235,0.5)] transition-all duration-300">
                     Subscribe
                 </button>
             </div>
-        </form>
+            <p id="subscribe-msg" class="mt-4 text-sm text-white/50 hidden"></p>
+        </div>
     </div>
 </section>
 
@@ -657,7 +658,7 @@
                 <div class="flex flex-col gap-3 text-[14px] text-white/60">
                     <a href="/privacy-policy" class="hover:text-[#2563eb] transition-colors">Privacy Policy</a>
                     <a href="/terms-of-service" class="hover:text-[#2563eb] transition-colors">Terms of Service</a>
-                    <a href="mailto:contact@ascendapp.in" class="hover:text-[#2563eb] transition-colors">Contact Support</a>
+                    <a href="/cdn-cgi/l/email-protection#73101c1d0712100733120010161d171203035d1a1d" class="hover:text-[#2563eb] transition-colors">Contact Support</a>
                    
                 </div>
             </div>
@@ -673,7 +674,7 @@
         </div>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         const animateValue = (obj, start, end, duration) => {
             let startTimestamp = null;
             const step = (timestamp) => {
@@ -707,6 +708,28 @@
         }, observerOptions);
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        function subscribeMailchimp() {
+            const email = document.getElementById('mc-email').value;
+            const msg = document.getElementById('subscribe-msg');
+            if (!email) return;
+            msg.textContent = 'Subscribing...';
+            msg.classList.remove('hidden');
+            const callbackName = 'mcCallback_' + Date.now();
+            const url = 'https://ascendapp.us5.list-manage.com/subscribe/post-json?u=d770168eeb741021cf7086183&id=a0fd77353b&EMAIL=' + encodeURIComponent(email) + '&c=' + callbackName;
+            window[callbackName] = function(data) {
+                if (data.result === 'success') {
+                    document.getElementById('subscribe-form').innerHTML = '<p class="text-[#2563eb] font-bold text-[11px] tracking-widest uppercase mb-4">Confirmed</p><h3 class="text-[24px] font-bold text-white mb-2">You\'re in. 🎯</h3><p class="text-white/60">Performance insights incoming. Watch your inbox.</p>';
+                } else {
+                    msg.textContent = data.msg.replace(/<[^>]*>/g, '');
+                    msg.classList.remove('hidden');
+                }
+                delete window[callbackName];
+            };
+            const script = document.createElement('script');
+            script.src = url;
+            document.body.appendChild(script);
+        }
     </script>
 </body>
 </html>
