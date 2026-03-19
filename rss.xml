@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ASCEND System Insights</title>
+    <link>https://www.ascendapp.in</link>
+    <description>Performance intelligence for serious athletes — training science, strength programming, and AI-driven insights from Prajwal, founder of ASCEND.</description>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 19 Mar 2026 23:25:49 +0000</lastBuildDate>
+    <atom:link href="https://www.ascendapp.in/rss.xml" rel="self" type="application/rss+xml"/>
+    <image>
+      <url>https://www.ascendapp.in/images/favicon.png</url>
+      <title>ASCEND System Insights</title>
+      <link>https://www.ascendapp.in</link>
+    </image>
+
+    <!-- RSS_ITEMS_MARKER -->
+    <item>
+      <title><![CDATA[Why is one arm weaker than the other and how to fix muscle imbalances]]></title>
+      <link>https://www.ascendapp.in/blog/why-is-one-arm-weaker-than-the-other-and-how-to-fix-muscle-imbalances.html</link>
+      <guid>https://www.ascendapp.in/blog/why-is-one-arm-weaker-than-the-other-and-how-to-fix-muscle-imbalances.html</guid>
+      <pubDate>Thu, 19 Mar 2026 23:25:49 +0000</pubDate>
+      <description><![CDATA[Tired of one arm feeling weaker? I built Ascend because I saw too many lifters stuck with imbalances. We'll dive into the real reasons behind your uneven strength and show you how to truly fix it, not just guess.]]></description>
+      <enclosure url="https://www.ascendapp.in/images/muscle-imbalance.jpg" type="image/jpeg" length="0"/>
+    </item>
+
+    <item>
+      <title><![CDATA[Creatine, Pre-workout, or Programming: What actually makes you stronger faster?]]></title>
+      <link>https://www.ascendapp.in/blog/creatine-pre-workout-or-programming-what-actually-makes-you-stronger-faster.html</link>
+      <guid>https://www.ascendapp.in/blog/creatine-pre-workout-or-programming-what-actually-makes-you-stronger-faster.html</guid>
+      <pubDate>Wed, 19 Mar 2026 00:00:00 +0000</pubDate>
+      <description><![CDATA[Most lifters waste money on supplements before fixing their programming. Here's what the data actually says about what moves the needle fastest.]]></description>
+      <enclosure url="https://www.ascendapp.in/images/supplements-vs-data.jpg" type="image/jpeg" length="0"/>
+    </item>
+
+    <item>
+      <title><![CDATA[Why is my bench press stuck and exactly how to break through a strength plateau]]></title>
+      <link>https://www.ascendapp.in/blog/why-is-my-bench-press-stuck-and-exactly-how-to-break-through-a-strength-plateau.html</link>
+      <guid>https://www.ascendapp.in/blog/why-is-my-bench-press-stuck-and-exactly-how-to-break-through-a-strength-plateau.html</guid>
+      <pubDate>Wed, 11 Mar 2026 00:00:00 +0000</pubDate>
+      <description><![CDATA[Hitting a frustrating bench press plateau? This guide reveals the scientific reasons behind stalled progress and provides actionable strategies to reignite your strength gains.]]></description>
+      <enclosure url="https://www.ascendapp.in/images/bench-plateau.jpg" type="image/jpeg" length="0"/>
+    </item>
+
+    <item>
+      <title><![CDATA[How long should a gym session last if you want to build muscle without overtraining]]></title>
+      <link>https://www.ascendapp.in/blog/how-long-should-a-gym-session-last-if-you-want-to-build-muscle-without-overtraining.html</link>
+      <guid>https://www.ascendapp.in/blog/how-long-should-a-gym-session-last-if-you-want-to-build-muscle-without-overtraining.html</guid>
+      <pubDate>Mon, 09 Mar 2026 00:00:00 +0000</pubDate>
+      <description><![CDATA[Discover the science-backed duration for gym sessions to maximize muscle growth while avoiding overtraining.]]></description>
+      <enclosure url="https://www.ascendapp.in/images/biceps.jpg" type="image/jpeg" length="0"/>
+    </item>
+
+    <item>
+      <title><![CDATA[How Many Days a Week Should You Lift to Build Serious Muscle?]]></title>
+      <link>https://www.ascendapp.in/blog/how-many-days-a-week-should-you-lift-to-build-serious-muscle.html</link>
+      <guid>https://www.ascendapp.in/blog/how-many-days-a-week-should-you-lift-to-build-serious-muscle.html</guid>
+      <pubDate>Sun, 08 Mar 2026 00:00:00 +0000</pubDate>
+      <description><![CDATA[Understanding optimal training frequency is paramount for maximizing hypertrophy without sacrificing recovery.]]></description>
+      <enclosure url="https://www.ascendapp.in/images/gym.jpg" type="image/jpeg" length="0"/>
+    </item>
+
+    <item>
+      <title><![CDATA[Optimizing CNS Recovery with Predictive Biometrics]]></title>
+      <link>https://www.ascendapp.in/blog/optimizing-cns-recovery.html</link>
+      <guid>https://www.ascendapp.in/blog/optimizing-cns-recovery.html</guid>
+      <pubDate>Fri, 24 Oct 2025 00:00:00 +0000</pubDate>
+      <description><![CDATA[Discover how elite strength athletes use predictive biometrics to measure Central Nervous System fatigue and prevent overtraining.]]></description>
+      <enclosure url="https://www.ascendapp.in/images/cns.jpg" type="image/jpeg" length="0"/>
+    </item>
+
+    <item>
+      <title><![CDATA[AI-Driven Programming Over Passive Tracking]]></title>
+      <link>https://www.ascendapp.in/blog/ai-driven-programming.html</link>
+      <guid>https://www.ascendapp.in/blog/ai-driven-programming.html</guid>
+      <pubDate>Sat, 18 Oct 2025 00:00:00 +0000</pubDate>
+      <description><![CDATA[Why AI-driven programming beats passive tracking for serious strength athletes.]]></description>
+      <enclosure url="https://www.ascendapp.in/images/math.jpg" type="image/jpeg" length="0"/>
+    </item>
+
+    <item>
+      <title><![CDATA[Integrating Wearable Sync for Zero-Latency Output]]></title>
+      <link>https://www.ascendapp.in/blog/integrating-wearable-sync.html</link>
+      <guid>https://www.ascendapp.in/blog/integrating-wearable-sync.html</guid>
+      <pubDate>Thu, 09 Oct 2025 00:00:00 +0000</pubDate>
+      <description><![CDATA[How wearable sync integration eliminates data lag and gives athletes real-time performance output.]]></description>
+      <enclosure url="https://www.ascendapp.in/images/wearable.jpg" type="image/jpeg" length="0"/>
+    </item>
+
+  </channel>
+</rss>
